@@ -1,0 +1,163 @@
+$vv: #ffff;
+
+.wrapper{
+    width: 100%;
+    height: 825px;
+    float: left;
+}
+
+.data_container{
+    display: block;
+    float: left;
+}
+
+.title{
+    color:$vv;
+    font-size: 36px;
+    font-weight: 700;
+    margin-left: 122px;
+    margin-top: 93px;
+    span{
+        color: #D02626;
+    }
+}
+
+.activity_container{
+    margin-left: 170px;
+    margin-top: 45px;
+    float: left;
+    .activity_block{
+        cursor: pointer;
+        color: white;
+        width: 568px;
+        height: 47px;
+        background-color: rgba(57, 59, 67, 0.60);;
+        border-radius: 20px;
+        display: flex;
+        position: relative;
+        align-items: center;
+        margin-top: 10px;
+        p{
+            float: left;
+            margin-left: 29px;
+        }
+        .active_dot{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: white;
+            right: 30px;
+            position: absolute;
+        }
+    }
+    #active{
+        background-color: #43454f;
+    }
+}
+
+.form_block{
+    float: right;
+    margin-left: 140px;
+    margin-top: 45px;
+    h3{
+        text-align: center;
+        color: white;
+        font-size: 18px;
+        font-weight: 300;
+    }
+}
+
+.checkbox_container{
+margin-left: 15px;
+}
+
+.male_checkbox_block,.female_checkbox_block{
+    display: inline-block;
+    p{
+        color: white;
+        display: inline-block;
+    }
+    input{
+        display: inline-block;
+        margin-right: 25px;
+        background-color: #D9D9D9;
+        border-radius: 50px;
+    }
+}
+
+.male_checkbox_block{
+    margin-right: 34px;
+}
+
+.form{
+    display: block;
+    width: 267px;
+    height: 46px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #393B43;
+    margin-top: 15px;
+    color: white;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.form::placeholder{
+    color: #B6B6B6;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.button_container{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.button{
+    width: 196px;
+    height: 45px;
+    border-radius: 25px;
+    background: #BE0000;
+    border:none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    box-shadow: 0px 0px 25px 0px rgba(132, 0, 0, 0.60);
+    transition: .3s ease;
+    &:hover{
+        transform: scale(.96);
+    }
+}
+
+.result_block{
+    float: left;
+    color: white;
+    margin-left: 200px;
+    margin-top: 30px;
+}
+
+.result_text{
+    float: left;
+    font-size: 20px;
+    font-weight: 400;
+    span{
+        color: #00C851;
+    }
+}
+
+.subtitle{
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.error_text{
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -7px;
+}
