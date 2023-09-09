@@ -11,9 +11,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function AdvantagesBlock() {
     return (
         <div className={inter.className}>
-            <div className={style.wrapper}>
-                <div className={style.title_text_container}>
-                    <h1>НАШИ ПРЕИМУЩЕСТВА 💪</h1>
+            <div className={style.wrapper}  >
+                <div className={style.title_text_container} id='advantages_block'>
+                    <h1 >НАШИ ПРЕИМУЩЕСТВА 💪</h1>
                     <p>ИЛИ ВСЕ ЧТО МОЖЕТ БЫТЬ ПОЛЕЗНЫМ ⭐</p>
                 </div>
                 <div className={style.advantages_container}>

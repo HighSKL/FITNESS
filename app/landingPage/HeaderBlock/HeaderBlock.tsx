@@ -19,9 +19,9 @@ export default function HeaderBlock() {
                         </div>
                     </div>
                     <div className={style.navbar}>
-                        <Link href={"#"} className={style.text}>Преимущества</Link>
-                        <Link href={"#"} className={style.text}>Калькулятор</Link>
-                        <Link href={"#"} className={style.text}>Войти</Link>
+                        <a href={"#advantages_block"} className={style.text}>Преимущества</a>
+                        <a href={"#calculator_block"} className={style.text}>Калькулятор</a>
+                        <Link href={"/sign"} className={style.text}>Войти</Link>
                     </div>
                 </div>
                 <div className={style.header_text}>
@@ -36,6 +36,5 @@ export default function HeaderBlock() {
                 <div className={style.transition_block}></div>
             </div>
         </div>
-
     );
 }

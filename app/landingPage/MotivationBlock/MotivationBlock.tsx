@@ -5,7 +5,7 @@ import motiv_people from '@/public/img/motivpng.png'
 
 export default function MotivationBlock() {
     return (
-        <div className={style.wrapper}>
+        <div className={style.wrapper} id='motivation_block'>
             <Image src={motiv_people} alt='' className={style.bg_image} />
             <div className={style.motivation_block}>
                 <hr className={style.top_hr}/>
