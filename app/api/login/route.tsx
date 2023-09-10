@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server"
 import { sql } from "@vercel/postgres"
-import { users } from "../data/users"
 import { UserType } from "@/app/types"
 
 export async function GET(req: Request) {
