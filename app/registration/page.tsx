@@ -4,6 +4,7 @@ import style from './registrationPage.module.scss';
 import { Field, Form, Formik } from 'formik';
 import { validator } from '../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { redirect } from 'next/navigation';
 
 export default function RegistrationPage() {
 
@@ -22,15 +23,18 @@ export default function RegistrationPage() {
                 <h1 className={style.title}>Регистрация</h1>
                 <Formik
                         initialValues={{ email: '', password: '', userName: ''}}
-                        onSubmit={(values) => {
+                        onSubmit={ async (values) => {
                             if(
                                 validator(/^[a-zA-Zа-яёА-ЯЁ\s]{2,20}$/, FieldErrors.userNameError, values.userName, setFieldError)&&
                                 validator(/^\S+@\S+\.\S+$/,FieldErrors.emailError, values.email, setFieldError)&&
                                 validator(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(.*[A-Z]{1,}).*$/, FieldErrors.passwordError, values.password, setFieldError)
                             ){
                                 setFieldError(null)
-                                alert(values.password)
-                                //server request
+                                await fetch("http://localhost:3000/api/registration", {
+                                    method:"POST",
+                                    body: JSON.stringify({username: values.userName, email: values.email, password: values.password})
+                                }).then(()=>{redirect('/')})
+                                
                             }
                         }}
                     >

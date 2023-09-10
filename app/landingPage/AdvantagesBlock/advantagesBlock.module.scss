@@ -95,3 +95,32 @@
     filter: blur(6px);
     margin-left: 30px;
 }
+
+
+@media (max-width: 390px) {
+    .wrapper{
+        height: 1093px;
+    }
+    .title_text_container{
+        margin: 0;
+        text-align: center;
+        h1{
+            font-size: 24px;
+        }
+        p{
+            margin-top: -15px;
+            font-size: 12px;
+        }
+    }
+    .advantages_container{
+        flex-direction: column;
+    }
+    .block_1, .block_2, .block_3{
+        p{
+            font-size: 20px;
+        }
+        .image{
+            transform: scale(.95);
+        }
+    }
+}

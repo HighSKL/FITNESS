@@ -3,7 +3,7 @@ import style from './headerBlock.module.scss'
 import { Blinker, Open_Sans } from 'next/font/google'
 import Link from 'next/link';
 import Image from 'next/image';
-import img from '@/public/img/people.png'
+import img from '@/public/img/People_2.png'
 
 const blinker = Blinker({ weight: '700', subsets: ['latin'] })
 const op_san = Open_Sans({ subsets: ['latin'] })
@@ -31,7 +31,7 @@ export default function HeaderBlock() {
                 </div>
                 <button className={style.button}>Начать</button>
                 <div className={style.people_img_container}>
-                    <Image src={img} alt=''/>
+                    <Image src={img} alt='' className={style.img}/>
                 </div>
                 <div className={style.transition_block}></div>
             </div>

@@ -28,7 +28,8 @@ export default function SignInPage() {
                                 validator(/\w/, FieldErrors.passwordError, values.password, setFieldError)
                             ){
                                 setFieldError(null);
-                                //server request
+                                const user = fetch(`http://localhost:3000/api/login?e=${values.email}&p=${values.password}`).then(res => res.json()).then(res=>res)
+                                console.log(user)
                             }
                         }}
                     >

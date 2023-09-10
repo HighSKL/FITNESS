@@ -89,3 +89,8 @@
     box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 390px) {
+    .header_text{
+        font-size: 24px;
+    }
+}
