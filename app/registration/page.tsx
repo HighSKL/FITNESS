@@ -4,9 +4,12 @@ import style from './registrationPage.module.scss';
 import { Field, Form, Formik } from 'formik';
 import { validator } from '../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { createUser } from '../Assets/api_service';
 
 export default function RegistrationPage() {
+
+    const router = useRouter();
 
     enum FieldErrors {
         userNameError,
@@ -16,7 +19,6 @@ export default function RegistrationPage() {
 
     const [fieldError, setFieldError] = React.useState<FieldErrors|null>(null)
     const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false)
-
     return (
         <div className={style.wrapper}>
             <div className={style.registration_block}>
@@ -30,11 +32,7 @@ export default function RegistrationPage() {
                                 validator(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(.*[A-Z]{1,}).*$/, FieldErrors.passwordError, values.password, setFieldError)
                             ){
                                 setFieldError(null)
-                                await fetch("http://localhost:3000/api/registration", {
-                                    method:"POST",
-                                    body: JSON.stringify({username: values.userName, email: values.email, password: values.password})
-                                }).then(()=>{redirect('/')})
-                                
+                                await createUser(values.userName, values.email, values.password).then(res=>router.push('/profile'))
                             }
                         }}
                     >
@@ -61,7 +59,8 @@ export default function RegistrationPage() {
                                     - Хотя бы одну заглавную букву<br/>
                                     - Хотя бы одну цифру
                                 </p>
-                                <button className={style.button}>Создать аккаунт</button>
+                                <button type="submit" className={style.button}>Создать аккаунт</button>
+                                
                             </Form>
                         )}
                     </Formik>

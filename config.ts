@@ -1,0 +1,1 @@
+export const secretToken = "fitness-app-token"
