@@ -33,9 +33,9 @@ export default function withAuth<T extends injectedProps>(WrappedComponent: Reac
                 setUser(true) 
 
         }, [])
-
+// user = {user}
         return (<>
-            {isUser?<WrappedComponent user = {user} {...props}/>:<Preloader />}
+            {isUser?<WrappedComponent  {...props}/>:<Preloader />}
         </>)
     }
 }

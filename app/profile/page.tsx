@@ -5,14 +5,14 @@ import { UserDataType } from '../types';
 import withAuth from '../Assets/Hocs/withAuth';
 
 type PropsType = {
-    user: UserDataType
+    // user: UserDataType
 }
 
 function Profile(props: PropsType) {
     return (
         <div className={style.wrapper}>
             <h1 className={style.username}>
-                {props.user.username}
+                {/* {props.user.username} */}
             </h1>
         </div>
     );
