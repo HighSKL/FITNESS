@@ -13,12 +13,12 @@ export default function withAuth<T extends injectedProps>(WrappedComponent: Reac
 
         const router = useRouter();
 
-        const user = data.userData
+        const userData = data.userData
 
         const [isUser, setUser] = useState(false)
 
         useEffect(() => {
-            if (!user) {
+            if (!userData) {
                 (async () => {
                     const data: UserDataType|ErrorResponesType = await getProfile().then(res => res)
                     if (data?.status === 401)
@@ -35,7 +35,7 @@ export default function withAuth<T extends injectedProps>(WrappedComponent: Reac
         }, [])
 // user = {user}
         return (<>
-            {isUser?<WrappedComponent  {...props}/>:<Preloader />}
+            {isUser?<WrappedComponent user = {userData}  {...props}/>:<Preloader />}
         </>)
     }
 }
