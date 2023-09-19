@@ -4,7 +4,7 @@ import style from './profile.module.scss'
 import { UserDataType } from '../types';
 import withAuth from '../Assets/Hocs/withAuth';
 
-type PropsType = {
+interface PropsType {
     user: UserDataType
 }
 
