@@ -2,12 +2,13 @@
 import React from 'react';
 import style from './registrationPage.module.scss';
 import { Field, Form, Formik } from 'formik';
-import { validator } from '../functions';
+import { validator } from '../../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
-import { createUser } from '../Assets/api_service';
+import { createUser } from '../../Assets/api_service';
+import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
 
-export default function RegistrationPage() {
+function RegistrationPage() {
 
     const router = useRouter();
 
@@ -18,7 +19,9 @@ export default function RegistrationPage() {
     }
 
     const [fieldError, setFieldError] = React.useState<FieldErrors|null>(null)
-    const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false)
+    const [passwordVisible, setPasswordVisible] = React.useState(false)
+    const [isSignInDisabled, setIsSignInDisabled] = React.useState(false)
+
     return (
         <div className={style.wrapper}>
             <div className={style.registration_block}>
@@ -32,7 +35,11 @@ export default function RegistrationPage() {
                                 validator(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(.*[A-Z]{1,}).*$/, FieldErrors.passwordError, values.password, setFieldError)
                             ){
                                 setFieldError(null)
-                                await createUser(values.userName, values.email, values.password).then(res=>router.push('/profile'))
+                                setIsSignInDisabled(true)
+                                await createUser(values.userName, values.email, values.password).then(res=>{
+                                    router.push('/profile')
+                                    setIsSignInDisabled(false)
+                                })
                             }
                         }}
                     >
@@ -59,7 +66,7 @@ export default function RegistrationPage() {
                                     - Хотя бы одну заглавную букву<br/>
                                     - Хотя бы одну цифру
                                 </p>
-                                <button type="submit" className={style.button}>Создать аккаунт</button>
+                                <button type="submit" className={style.button} disabled={isSignInDisabled}>Создать аккаунт</button>
                                 
                             </Form>
                         )}
@@ -68,3 +75,5 @@ export default function RegistrationPage() {
         </div>
     );
 }
+
+export default withOutOfAuth(RegistrationPage)

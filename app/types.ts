@@ -11,4 +11,10 @@ export type UserDataType = {
     height: number|null,
     userImg: string|null,
     isWellcomeBriefingComplete: boolean;
+    status?: number
+}
+
+export type ErrorResponesType = {
+    status: number,
+    message: string
 }

@@ -84,7 +84,7 @@
     width: 296px;
     height: 35px;
     border-radius: 15px;
-    background: #00C851;
+    background-color: #00C851;
     border: none;
     color: white;
     font-size: 16px;
@@ -95,6 +95,11 @@
     cursor: pointer;
     &:hover{
         transform: scale(.98);
+    }
+    &:disabled{
+        background-color: #067a34;
+        color: rgb(170, 170, 170);
+        box-shadow: 0px 0px 20px rgba(2, 128, 53, 0.5);
     }
 }
 .funс_block{
