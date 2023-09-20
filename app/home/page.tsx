@@ -15,7 +15,7 @@ function HomePage() {
             <div className={style.wrapper}>
                 <div className={style.content_block}>
                     <h1 className={style.header_text}>Главная</h1>
-                    <h4 className={style.wellcome_text}>Здравствуйте, {user.username}!</h4>
+                    <h4 className={style.wellcome_text}>Здравствуйте, {user?.username}!</h4>
                     <div className={style.journal_block}>
                         <p>Продолжайте вести ваш дневник 🥇</p>
                         <textarea name="" id="" placeholder={'Начните вводить свои заметки или еще что-либо : )'}></textarea>
