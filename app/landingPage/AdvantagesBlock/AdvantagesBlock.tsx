@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './advantagesBlock.module.scss'
-import { Inter } from 'next/font/google'
 import Image from 'next/image';
 import block_1_img from '@/public/img/phone_in_hand.png'
 import block_2_img from '@/public/img/food.png'
 import block_3_img from '@/public/img/dumbbel.png'
+import {inter} from '@/app/Assets/fonts'
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export default function AdvantagesBlock() {
     return (

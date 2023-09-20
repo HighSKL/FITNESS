@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './categoryBlock.module.scss'
-import { Open_Sans } from 'next/font/google'
 import bg_image from '@/public/img/body.png'
 import Image from 'next/image';
-
-const op_san = Open_Sans({ subsets: ['latin'] })
+import { op_san } from '@/app/Assets/fonts';
 
 export default function CategoryBlock() {
     return (

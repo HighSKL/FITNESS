@@ -37,7 +37,7 @@ function RegistrationPage() {
                                 setFieldError(null)
                                 setIsSignInDisabled(true)
                                 await createUser(values.userName, values.email, values.password).then(res=>{
-                                    router.push('/profile')
+                                    router.push('/home')
                                     setIsSignInDisabled(false)
                                 })
                             }

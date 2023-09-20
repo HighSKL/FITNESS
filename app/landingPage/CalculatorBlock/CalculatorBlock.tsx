@@ -1,10 +1,8 @@
 'use client'
 import { Field, Form, Formik } from 'formik';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import style from './calculatorBlock.module.scss'
-import { Open_Sans } from 'next/font/google'
-
-const op_san = Open_Sans({ subsets: ['latin'] })
+import { op_san } from '@/app/Assets/fonts';
 
 export default function CalculatorBlock() {
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import style from './headerBlock.module.scss'
-import { Blinker, Open_Sans } from 'next/font/google'
 import Link from 'next/link';
 import Image from 'next/image';
 import img from '@/public/img/People_2.png'
-
-const blinker = Blinker({ weight: '700', subsets: ['latin'] })
-const op_san = Open_Sans({ subsets: ['latin'] })
+import { blinker, op_san } from '@/app/Assets/fonts';
 
 export default function HeaderBlock() {
     return (

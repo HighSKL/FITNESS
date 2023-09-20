@@ -39,7 +39,7 @@ function SignInPage() {
                                 await authUser(values.email, values.password).then((res)=>{
                                     switch(res.status){
                                         case 200:{
-                                            router.push('/profile')
+                                            router.push('/home')
                                             break
                                         }
                                         case 401:{

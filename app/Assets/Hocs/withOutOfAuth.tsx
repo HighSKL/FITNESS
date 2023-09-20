@@ -26,7 +26,7 @@ export default function withOutOfAuth<T extends injectedProps>(WrappedComponent:
                     else {
                         setUserData(data as UserDataType)
                         setUser(true)
-                        router.push('/profile')
+                        router.push('/home')
                     }
                 })()
             }
