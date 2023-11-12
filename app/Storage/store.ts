@@ -13,7 +13,7 @@ import { UserDataType } from "../types";
 
 
 export const data = {
-    userData: {email: "a@a.a", height: null, id: 17, iswellcomebriefingcomplete: false, userimg: null, username: "Алексей", weight: null} as any|null,
+    userData: null,
     trackers: [
         {trackerID: 1, trackerColor: "#82DB86", icon: "🏃‍♀️", trackerName: "Training Tracker", windowType: ModalWidows.TrainingWindow},
         {trackerID: 2, trackerColor: "#1380DC", icon: "💧", trackerName: "Water Tracker", windowType: ModalWidows.WaterWindow},

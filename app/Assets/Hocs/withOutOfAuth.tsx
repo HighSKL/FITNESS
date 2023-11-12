@@ -17,9 +17,11 @@ export default function withOutOfAuth<T extends injectedProps>(WrappedComponent:
         const [isUser, setUser] = useState(true)
 
         useEffect(() => {
+            console.log(user)
             if (!user) {
                 (async () => {
                     const data: UserDataType|ErrorResponesType  = await getProfile().then(res => res)
+                    console.log(data)
                     if (data?.status === 401) {
                         setUser(false)
                     }
@@ -29,6 +31,10 @@ export default function withOutOfAuth<T extends injectedProps>(WrappedComponent:
                         router.push('/home')
                     }
                 })()
+            }
+            else{
+                setUser(true)
+                router.push('/home')
             }
         }, [])
 

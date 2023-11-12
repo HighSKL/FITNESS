@@ -159,3 +159,25 @@
         }
     }
 }
+
+.logout_button{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    background-color: black;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s ease;
+    .icon{
+        margin-left: -2px;
+    }
+    &:hover{
+        transform: scale(.9);
+    }
+}

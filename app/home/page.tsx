@@ -6,11 +6,15 @@ import { data } from '../Storage/store';
 import { op_san, ubuntu } from '../Assets/fonts';
 import Water from '../(trackers)/Water/Water';
 import { ModalWidows } from '../Assets/enums';
+import { BiLogOut } from "react-icons/bi";
+import { logOutUser } from '../Assets/api_service';
+import { useRouter } from 'next/navigation';
 
 function HomePage() {
 
     const user = data.userData
     const trackers = data.trackers
+    const route = useRouter()
 
     const [activeModalWindow, setActiveModalWindow] = useState<ModalWidows | null>(null)
 
@@ -26,21 +30,31 @@ function HomePage() {
         </div>
     ))
 
+    const logOut = async () => {
+        const logout = await logOutUser().then(res=>res);
+        if(logout.status == 200){
+            route.push('/sign')
+        }
+    }
+
     return (
         <>
             {activeModalWindow == ModalWidows.WaterWindow ? <Water closeWindow = {setActiveModalWindow} /> : null}
             <div className={op_san.className}>
                 <div className={style.wrapper}>
+                    <div className={style.logout_button} onClick={()=>{logOut()}}>
+                        <BiLogOut className={style.icon}/>
+                    </div>
                     <div className={style.content_block}>
                         <h1 className={style.header_text}>Главная</h1>
-                        <h4 className={style.wellcome_text}>Здравствуйте, {user?.username}!</h4>
-                        <div className={style.journal_block}>
+                        {/* <h4 className={style.wellcome_text}>Здравствуйте, {user?.username}!</h4> */}
+                        {/* <div className={style.journal_block}>
                             <p>Продолжайте вести ваш дневник 🥇</p>
                             <textarea name="" id="" placeholder={'Начните вводить свои заметки или еще что-либо : )'}></textarea>
                         </div>
                         <div className={style.diary_container}>
                             <button className={style.diary_button}>Дневник 📔</button>
-                        </div>
+                        </div> */}
                         <div className={style.trackers_block}>
                             <div className={ubuntu.className}>
                                 <h1 className={style.block_title}>Трекеры и здоровье</h1>

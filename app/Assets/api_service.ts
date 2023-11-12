@@ -21,3 +21,9 @@ export async function authUser(email:string, password:string){
         body: JSON.stringify({email: email, password: password})
     }).then(res=>res.json())
 }
+
+export async function logOutUser(){
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/logout`, {
+        method: 'POST'
+    }).then(res=>res.json())
+}
