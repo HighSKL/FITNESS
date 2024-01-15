@@ -1,11 +1,13 @@
-import React from 'react';
+'use client'
 import style from './headerBlock.module.scss'
 import Link from 'next/link';
-import Image from 'next/image';
-import img from '@/public/img/People_2.png'
 import { blinker, op_san } from '@/app/Assets/fonts';
+import { useRouter } from 'next/navigation';
 
 export default function HeaderBlock() {
+
+    const router = useRouter()
+
     return (
         <div className={op_san.className}>
             <div className={style.wrapper}>
@@ -21,15 +23,21 @@ export default function HeaderBlock() {
                         <Link href={"/sign"} className={style.text}>Войти</Link>
                     </div>
                 </div>
-                <div className={style.header_text}>
-                    <h1 className={style.sticker_text}>🥊 🥇</h1>
-                    <h1 className={style.motivation_text}>Начните новую<br />спортивную жизнь</h1>
-                    <h1 className={style.sub_motivation_text}>А мы вам с этим поможем</h1>
+                <div className={style['header-content']}>
+                    <div className={style['header-content__left-group']}>
+                        <div className={style.header_text}>
+                            <h1 className={style.sticker_text}>🥊 🥇</h1>
+                            <h1 className={style.motivation_text}>Начните новую<br />спортивную жизнь</h1>
+                            <h1 className={style.sub_motivation_text}>А мы вам с этим поможем
+                            </h1>
+                        </div>
+                        <button className={style.button} onClick={()=>{router.push('/sign')}}>Начать</button>
+                    </div>
+                    <div className={style['header-content__right-group']}>
+                    </div>
+                    
                 </div>
-                <button className={style.button}>Начать</button>
-                <div className={style.people_img_container}>
-                    <Image src={img} alt='' className={style.img}/>
-                </div>
+                
                 <div className={style.transition_block}></div>
             </div>
         </div>

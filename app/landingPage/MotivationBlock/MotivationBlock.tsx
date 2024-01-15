@@ -1,9 +1,14 @@
+'use client'
 import React from 'react';
 import style from './motivationBlock.module.scss'
 import Image from 'next/image';
 import motiv_people from '@/public/img/motivpng.png'
+import { useRouter } from 'next/navigation';
 
 export default function MotivationBlock() {
+
+    const router = useRouter()
+
     return (
         <div className={style.wrapper} id='motivation_block'>
             <Image src={motiv_people} alt='' className={style.bg_image} />
@@ -16,7 +21,7 @@ export default function MotivationBlock() {
                     <span className={style.line_4}>СПОСОБЕН</span>
                 </p>
                 <hr className={style.bottom_hr}/>
-                <button className={style.button}>Присоединиться</button>
+                <button className={style.button} onClick={()=>{router.push('/sign')}}>Присоединиться</button>
                 <div className={style.shadow}></div>
             </div>
         </div>

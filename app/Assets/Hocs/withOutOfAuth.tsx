@@ -1,5 +1,5 @@
 "use client"
-import { data, setUserData } from '@/app/Storage/store';
+import { data, setUserData } from '@/app/(storage)/store';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Preloader from '../Preloader/Preloader';

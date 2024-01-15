@@ -77,3 +77,4 @@ function RegistrationPage() {
 }
 
 export default withOutOfAuth(RegistrationPage)
+// export default RegistrationPage

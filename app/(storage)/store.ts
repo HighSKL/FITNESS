@@ -1,5 +1,7 @@
 import { ModalWidows } from "../Assets/enums";
 import { UserDataType } from "../types";
+import { configureStore } from "@reduxjs/toolkit";
+import { MainDataReducer } from "./reducers/mainDataReducer";
 
 // export const data = {
 //     userData: null as UserDataType|null,
@@ -11,15 +13,17 @@ import { UserDataType } from "../types";
 //     ]
 // }
 
+export const store = configureStore({
+    reducer: { 
+        mainData: MainDataReducer
+    }
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export const data = {
-    userData: null,
-    trackers: [
-        {trackerID: 1, trackerColor: "#82DB86", icon: "🏃‍♀️", trackerName: "Training Tracker", windowType: ModalWidows.TrainingWindow},
-        {trackerID: 2, trackerColor: "#1380DC", icon: "💧", trackerName: "Water Tracker", windowType: ModalWidows.WaterWindow},
-        {trackerID: 3, trackerColor: "#EF3535", icon: "⚖️", trackerName: "Weight Tracker", windowType: ModalWidows.WeightWindow},
-        {trackerID: 4, trackerColor: "#FA9D48", icon: "🥗", trackerName: "Food Tracker", windowType: ModalWidows.FoodWindow}
-    ]
+    userData: null as UserDataType|null, 
 }
 
 export const setUserData = (newUserData: UserDataType) => { data.userData = newUserData }
