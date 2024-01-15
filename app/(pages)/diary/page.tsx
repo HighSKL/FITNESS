@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import style from './style.module.scss'
 import { DaysWeek, Months } from '@/app/Assets/enums';
 
-export default function Diary() {
+function Diary() {
 
-    // const activeMonth = new Date().getMonth()
     const [activeYear, setActiveYear] = useState(new Date().getFullYear())
     const [activeMonth, setActiveMonth] = useState((new Date().getMonth()))
 
@@ -49,7 +48,6 @@ export default function Diary() {
                     ))}
                 </div>
             </>
-
         )
     }
     useEffect(() => {
@@ -77,4 +75,4 @@ export default function Diary() {
     );
 }
 
-// export default withAuth(Diary);
+export default withAuth(Diary);
