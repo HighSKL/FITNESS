@@ -15,17 +15,41 @@
     gap: 40px;
 }
 
+.back-to-profile-icon{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #121215;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #000;
+    transition: .5s ease;
+    
+    font-size: 17px;
+    color: white;
+    margin-left: 50px;
+    
+    &:hover{
+        box-shadow: 0px 0px 2px #000;
+    }
+}
+
 .header-text{
     // text-align: left;
-    margin-left: 20px;
+    // margin-left: 10px;
     font-size: 24px;
     color: white;
 }
 
 .tools-menu{
     display: flex;
+    // grid-template-columns: repeat(3, 1fr);
     color: #f15bb5;
     justify-content: center;
+    gap: 10px;
+    // width: 60%;
     button{
         cursor: pointer;
         background-color: #fafafa00;
@@ -34,6 +58,12 @@
         border: none;
     }
 }
+
+.tools-menu__left-container, .tools-menu__right-container{ display: flex; gap: 10px;}
+
+.tools-menu__right-container{}
+
+.tools-menu__central-container{}
 
 .cells{
     color: white;
@@ -45,4 +75,17 @@
     width: 100%;
     height: 100px;
     border: .5px solid white;
+    cursor: pointer;
+}
+
+.dialog-window{
+    width: 100px;
+    height: 70px;
+    background-color: yellow;
+    position: absolute;
+}
+
+.cell__day-text{
+    margin-left: 5px;
+    margin-top: 5px;
 }
