@@ -5,7 +5,7 @@ import style from './style.module.scss'
 import { DaysWeek, Months } from '@/app/Assets/enums';
 import { FaRegUser } from "react-icons/fa";
 import Router from '@/app/Assets/CustomRouter/router';
-import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/page'
+import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/DiaryDataWindow'
 
 function Diary() {
 
