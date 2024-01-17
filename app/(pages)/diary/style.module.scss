@@ -8,7 +8,6 @@
 .header-menu{
     width: 100%;
     height: 70px;
-    // position: fixed;
     background-color: #1D1E22;
     display: flex;
     align-items: center;
@@ -37,7 +36,6 @@
 }
 
 .header-text{
-    // text-align: left;
     margin-left: 10px;
     font-size: 24px;
     color: white;
@@ -45,11 +43,9 @@
 
 .tools-menu{
     display: flex;
-    // grid-template-columns: repeat(3, 1fr);
     color: #f15bb5;
     justify-content: center;
     gap: 10px;
-    // width: 60%;
     button{
         cursor: pointer;
         background-color: #fafafa00;
@@ -61,14 +57,25 @@
 
 .tools-menu__left-container, .tools-menu__right-container{ display: flex; gap: 10px;}
 
-.tools-menu__right-container{}
-
-.tools-menu__central-container{}
+.tools-menu__central-container{
+    text-align: center;
+    width: 130px;
+}
 
 .cells{
     color: white;
+    
+}
+
+.weeks-day-container{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
 }
 
 .cell{
@@ -76,6 +83,7 @@
     height: 100px;
     border: .5px solid white;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .dialog-window{
@@ -88,4 +96,45 @@
 .cell__day-text{
     margin-left: 5px;
     margin-top: 5px;
+}
+
+.weeks-day-text-mob{
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .weeks-day-text-desc{
+        display: none;
+    }
+
+    .weeks-day-text-mob{
+        display: block;
+    }
+
+    .header-menu{
+        flex-flow: column;
+        height: auto;
+        gap: 15px;
+        padding-bottom: 15px;
+    }
+
+    .header-text{
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .tools-menu{
+        order: 3;
+    }
+    .back-to-profile-icon{
+        order: 2;
+        margin-left: 0px;
+    }
+    .tools-menu{
+        align-items: center;
+        button{
+            font-size: 24px;
+            color: #f15bb5;
+        }
+    }
 }

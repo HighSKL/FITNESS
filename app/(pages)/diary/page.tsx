@@ -2,7 +2,7 @@
 import withAuth from '@/app/Assets/Hocs/withAuth';
 import { useState } from 'react';
 import style from './style.module.scss'
-import { DaysWeek, Months } from '@/app/Assets/enums';
+import { DaysWeek, DaysWeekMobile, Months } from '@/app/Assets/enums';
 import { FaRegUser } from "react-icons/fa";
 import Router from '@/app/Assets/CustomRouter/router';
 import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/DiaryDataWindow'
@@ -51,7 +51,6 @@ function Diary() {
         setDialogWindowOpen(dto)
     }
 
-
     const renderCalendar = () => {
 
         let DayWeek = 0;
@@ -75,18 +74,24 @@ function Diary() {
 
         return (
             <div className={style.cells}>
-                {daysWeek.map(day => (
-                    <div>{DaysWeek[day]}</div>
-                ))}
-                {daysArr.map(day => (
-                    <>
-                    {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow closeWindow={setDialogWindowOpen}/>}
-                    <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
-                        {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
-                    </div>
-                    </>
-                    
-                ))}
+                <div className={style['weeks-day-container']}>
+                    {daysWeek.map(day => (
+                        <div className={style['weeks-day-text-desc']}>{DaysWeek[day]}</div>
+                    ))}
+                    {daysWeek.map(day => (
+                        <div className={style['weeks-day-text-mob']}>{DaysWeekMobile[day]}</div>
+                    ))}
+                </div>
+                <div className={style['days']}>
+                    {daysArr.map(day => (
+                        <>
+                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow closeWindow={setDialogWindowOpen} />}
+                            <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
+                                {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
+                            </div>
+                        </>
+                    ))}
+                </div>
             </div>
         )
     }
@@ -108,7 +113,7 @@ function Diary() {
                         <button onClick={CalendarToolWorker.ChooseNextYear}>{'>>'}</button>
                     </div>
                 </div>
-                <div className={style['back-to-profile-icon']} onClick={()=>redirect.sendUserTo('/home')}><FaRegUser /></div>
+                <div className={style['back-to-profile-icon']} onClick={() => redirect.sendUserTo('/home')}><FaRegUser /></div>
             </header>
             <div className={style.calendar}>
 

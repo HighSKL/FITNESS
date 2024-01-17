@@ -16,38 +16,47 @@
     height: 80vh;
     background-color: rgb(40, 40, 40);
     border-radius: 70px;
-    // transition: .2s ease;
     user-select: none;
+    transition: .5s ease;
+    animation: showWindow .3s;
 }
 
 .mob-close-window-line{
     display: none;
-    width: 30%;
-    height: 7px;
     border-radius: 2em;
+    width: 20%;
+    height: 7px;
     margin: 0 auto;
     margin-top: 20px;
-    background-color: white;
     cursor: pointer;
+    background-color: white;
 }
+
 
 @media (max-width: 767px) {
     .mob-close-window-line{
         display: block;
     }
     .background{
-        // align-items: end;
         display: block;
     }
     .window{
-        // transition: .0s ease;
         position: absolute;
-        top: 20vh;
         left: 0;
-        // bottom: 0;
+        bottom: 0;
         width: 100%;
-        height: 100vh;
+        height: 90vh;
+        border-radius: 30px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+    }
+}
+
+@keyframes showWindow {
+    from{
+        bottom: -100vh;
+    }
+    to{
+        bottom: 0;
     }
 }
