@@ -5,6 +5,7 @@ import style from './style.module.scss'
 import { DaysWeek, Months } from '@/app/Assets/enums';
 import { FaRegUser } from "react-icons/fa";
 import Router from '@/app/Assets/CustomRouter/router';
+import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/page'
 
 function Diary() {
 
@@ -43,14 +44,6 @@ function Diary() {
         }
     }
 
-    const DescrDialogWindow = () => {
-        return (
-            <div className={style['dialog-window']}>
-
-            </div>
-        )
-    }
-
     const setDialogWindowOpenFunc = (day: number) => {
         const dto = {
             day: day
@@ -86,10 +79,13 @@ function Diary() {
                     <div>{DaysWeek[day]}</div>
                 ))}
                 {daysArr.map(day => (
+                    <>
+                    {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow closeWindow={setDialogWindowOpen}/>}
                     <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
-                        {day != 0 && dialogWindowOpen?.day == day && <DescrDialogWindow />}
                         {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
                     </div>
+                    </>
+                    
                 ))}
             </div>
         )
