@@ -64,5 +64,5 @@ function HomePage() {
         </>
     );
 }
-
-export default withAuth(HomePage)
+export default HomePage
+// export default withAuth(HomePage)

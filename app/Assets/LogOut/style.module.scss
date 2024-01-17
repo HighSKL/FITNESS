@@ -19,3 +19,10 @@
         transform: scale(.9);
     }
 }
+
+@media (max-width: 767px) {
+    .logout_button{
+        display: none;
+        position: relative !important;
+    }
+}
