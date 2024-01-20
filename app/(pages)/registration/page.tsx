@@ -5,7 +5,7 @@ import { Field, Form, Formik } from 'formik';
 import { validator } from '../../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
-import { createUser } from '../../Assets/api_service';
+import { createUser } from '../../Assets/api_services/api_service';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
 
 function RegistrationPage() {

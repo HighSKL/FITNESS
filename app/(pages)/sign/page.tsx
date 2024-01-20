@@ -4,7 +4,7 @@ import style from './sign.module.scss'
 import { Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import { validator } from '../../functions';
-import { authUser } from '../../Assets/api_service';
+import { authUser } from '../../Assets/api_services/api_service';
 import { useRouter } from 'next/navigation';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
 

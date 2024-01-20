@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { getProfile } from '../api_service';
+import { getProfile } from '../api_services/api_service';
 import Preloader from '../Preloader/Preloader';
 import { data, setUserData } from '@/app/(storage)/store';
 import { ErrorResponesType, UserDataType } from '@/app/types';

@@ -3,7 +3,7 @@ import { data, setUserData } from '@/app/(storage)/store';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Preloader from '../Preloader/Preloader';
-import { getProfile } from '../api_service';
+import { getProfile } from '../api_services/api_service';
 import { ErrorResponesType, UserDataType } from '@/app/types';
 
 type injectedProps = {}
