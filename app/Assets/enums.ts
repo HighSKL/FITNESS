@@ -1,3 +1,10 @@
+export enum StatusesCodes {
+    OK = 200,
+    UserNotFound = 401,
+    UserNotAuthorized = 401,
+    InvalidPassword = 403
+}
+
 export enum ModalWidows {
     WaterWindow,
     TrainingWindow,
@@ -19,6 +26,23 @@ export enum Months {
     "Ноябрь" = 10,
     "Декабрь" = 11
 }
+
+
+export enum MonthsRusLang {
+    "Января" = 0,
+    "Февраля" = 1,
+    "Марта" = 2,
+    "Апреля" = 3,
+    "Мая" = 4,
+    "Июня" = 5,
+    "Июля" = 6,
+    "Августа" = 7,
+    "Сентября" = 8,
+    "Октября" = 9,
+    "Ноября" = 10,
+    "Декабря" = 11
+}
+
 
 export enum DaysWeek {
     "Понедельник" = 1,

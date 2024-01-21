@@ -1,41 +1,42 @@
 "use client"
-import { data, setUserData } from '@/app/(storage)/store';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Preloader from '../Preloader/Preloader';
 import { getProfile } from '../api_services/api_service';
 import { ErrorResponesType, UserDataType } from '@/app/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/app/(storage)/store';
+import { setUserData } from '@/app/(storage)/reducers/userDataReducer';
+import { StatusesCodes } from '../enums';
 
 type injectedProps = {}
 
 export default function withOutOfAuth<T extends injectedProps>(WrappedComponent: React.ComponentType<T>) {
     return (props: T) => {
 
-        const user = data.userData
+        const dispatch = useDispatch()
+
+        const user = useSelector((state: RootState) => (state.userData.user))
         const router = useRouter()
 
         const [isUser, setUser] = useState(true)
 
         useEffect(() => {
-            console.log(user)
-            if (!user) {
-                (async () => {
-                    const data: UserDataType|ErrorResponesType  = await getProfile().then(res => res)
-                    console.log(data)
-                    if (data?.status === 401) {
+            (async () => {
+                if (!user) {
+                    const data: UserDataType | ErrorResponesType = await getProfile().then(res => res)
+                    if (data?.status === StatusesCodes.UserNotAuthorized)
                         setUser(false)
-                    }
                     else {
-                        setUserData(data as UserDataType)
+                        dispatch(setUserData(data as UserDataType))
                         setUser(true)
                         router.push('/home')
                     }
-                })()
-            }
-            else{
-                setUser(true)
-                router.push('/home')
-            }
+                } else {
+                    setUser(true)
+                    router.push('/home')
+                }
+            })()
         }, [])
 
         return (<>

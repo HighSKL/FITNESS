@@ -1,23 +1,25 @@
 "use client"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import style from './homePage.module.scss'
 import withAuth from '../../Assets/Hocs/withAuth';
-import { RootState, data } from '../../(storage)/store';
+import { RootState } from '../../(storage)/store';
 import { op_san, ubuntu } from '../../Assets/fonts';
 import Water from '../../(components)/(trackers)/Water/Water';
 import { ModalWidows } from '../../Assets/enums';
 
 import Lock from '../../Assets/LockTracker/Lock';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogOut from '@/app/Assets/LogOut/LogOut';
 import Router from '@/app/Assets/CustomRouter/router';
 
 function HomePage() {
 
-
     const router = new Router()
-    const user = data.userData
-    const trackers = useSelector((state: RootState)=>state.mainData.trackers)
+
+    const { user, trackers } = useSelector((state: RootState)=>({
+        user: state.userData.user,
+        trackers: state.mainData.trackers
+    }))
 
     const [activeModalWindow, setActiveModalWindow] = useState<ModalWidows | null>(null)
 

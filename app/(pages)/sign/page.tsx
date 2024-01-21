@@ -7,6 +7,7 @@ import { validator } from '../../functions';
 import { authUser } from '../../Assets/api_services/api_service';
 import { useRouter } from 'next/navigation';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
+import { StatusesCodes } from '@/app/Assets/enums';
 
 function SignInPage() {
 
@@ -38,15 +39,15 @@ function SignInPage() {
                                 setIsSignInDisabled(true)
                                 await authUser(values.email, values.password).then((res)=>{
                                     switch(res.status){
-                                        case 200:{
+                                        case StatusesCodes.OK:{
                                             router.push('/home')
                                             break
                                         }
-                                        case 401:{
+                                        case StatusesCodes.UserNotFound:{
                                             setFieldError(FieldErrors.userNotFoundError)
                                             break
                                         }
-                                        case 403:{
+                                        case StatusesCodes.InvalidPassword:{
                                             setFieldError(FieldErrors.invalidPasswordError)
                                             break
                                         }

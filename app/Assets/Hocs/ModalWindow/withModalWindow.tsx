@@ -6,7 +6,7 @@ type injectedProps = {
     closeWindow: any
 }
 
-export default function withModalWindow<T extends injectedProps>(WrappedComponent: React.ComponentType<T>) {
+export default function withModalWindow<T extends injectedProps>(WrappedComponent: React.ComponentType<T|any>) {
     return (props: T) => {
 
         const [windowClose, setWindowClose] = useState(false)

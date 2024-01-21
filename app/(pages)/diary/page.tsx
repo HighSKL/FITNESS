@@ -1,16 +1,20 @@
 'use client'
 import withAuth from '@/app/Assets/Hocs/withAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './style.module.scss'
 import { DaysWeek, DaysWeekMobile, Months } from '@/app/Assets/enums';
 import { FaRegUser } from "react-icons/fa";
 import Router from '@/app/Assets/CustomRouter/router';
 import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/DiaryDataWindow'
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/(storage)/store';
 
 function Diary() {
 
     const [activeYear, setActiveYear] = useState(new Date().getFullYear())
     const [activeMonth, setActiveMonth] = useState((new Date().getMonth()))
+
+    const user = useSelector((state:RootState)=>state.userData.user)
 
     const redirect = new Router()
 
@@ -72,6 +76,7 @@ function Diary() {
             for (let i = 0; i < DayWeek - 1; i++)
                 daysArr.unshift(0);
 
+                
         return (
             <div className={style.cells}>
                 <div className={style['weeks-day-container']}>
@@ -85,7 +90,7 @@ function Diary() {
                 <div className={style['days']}>
                     {daysArr.map(day => (
                         <>
-                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow closeWindow={setDialogWindowOpen} />}
+                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow {...{id: user?.id,date: {year: activeYear, month: activeMonth+1, day: day} }} closeWindow={setDialogWindowOpen} />}
                             <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
                                 {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
                             </div>
@@ -123,5 +128,5 @@ function Diary() {
     );
 }
 
-export default Diary
-// export default withAuth(Diary);
+// export default Diary
+export default withAuth(Diary);
