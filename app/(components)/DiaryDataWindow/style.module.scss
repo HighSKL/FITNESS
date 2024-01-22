@@ -1,5 +1,46 @@
-.date-title{
-    margin-left: 20px;
+.wrapper{
+    width: 95%;
+    height: 90%;
+    margin: auto;
     margin-top: 30px;
+    overflow: scroll;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box;
+}
+.date-title{
+    padding-top: 20px;
     font-size: 28px;
+}
+
+.diary-note__textarea{
+    width: 100%;
+    height: 4vh;
+    font-size: 18px;
+    color: #fff;
+    resize: none;
+    margin-top: 50px;
+    border: none;
+    border-bottom: .5px solid #ffffff6a;
+    outline: none;
+    background-color: #ffffff00;
+    transition: .3s ease;
+    &:focus{
+        height: 30vh;
+        border-bottom: .5px solid #fff !important;
+        &::placeholder{
+            color: #53535300 !important;
+        }
+        
+    }
+    &::placeholder{
+        font-size: 16px;
+        color: #535353;
+    }
+    &:hover{
+        &::placeholder{
+            color: #656565;
+        }
+        border-bottom: .5px solid #fff;
+    }
 }

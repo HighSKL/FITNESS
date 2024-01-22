@@ -18,3 +18,10 @@ export type ErrorResponesType = {
     status: number,
     message: string
 }
+
+
+export type NoteType = {
+    id: number;
+    description: string;
+    note_date: any;
+}

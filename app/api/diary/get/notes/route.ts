@@ -11,13 +11,13 @@ export async function GET(req: Request, res: Response){
     const day = searchParams.get('day')
 
     if(day){
-        var notes = await sql`SELECT * FROM calendar_notes WHERE user_id = ${user_id} AND
+        var notes = await sql`SELECT id, description, note_date FROM calendar_notes WHERE user_id = ${user_id} AND
         EXTRACT(DAY FROM note_date) = ${day} AND 
         EXTRACT(MONTH FROM note_date) = ${month} AND 
         EXTRACT(YEAR FROM note_date) = ${year}`
     }
     else{
-        var notes = await sql`SELECT * FROM calendar_notes WHERE user_id = ${user_id} AND 
+        var notes = await sql`SELECT id, description, note_date FROM calendar_notes WHERE user_id = ${user_id} AND 
         EXTRACT(MONTH FROM note_date) = ${month} AND 
         EXTRACT(YEAR FROM note_date) = ${year}`
     }
