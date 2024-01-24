@@ -8,11 +8,16 @@ import Router from '@/app/Assets/CustomRouter/router';
 import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/DiaryDataWindow'
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
+import { getNotes } from '@/app/Assets/api_services/diary/service';
+import { NoteType } from '@/app/types';
+import ComponentPreloader from '@/app/Assets/ComponentPreloader/ComponentPreloader';
 
 function Diary() {
 
     const [activeYear, setActiveYear] = useState(new Date().getFullYear())
     const [activeMonth, setActiveMonth] = useState((new Date().getMonth()))
+    const [notes, setNotes] = useState<NoteType[]>([])
+    const [preloaderActive, setPreloaderActive] = useState(true)
 
     const user = useSelector((state:RootState)=>state.userData.user)
 
@@ -55,6 +60,14 @@ function Diary() {
         setDialogWindowOpen(dto)
     }
 
+    useEffect(()=>{
+        (async () => {
+            if(user)
+                setNotes(await getNotes(user.id, activeMonth+1, activeYear).then(res=>res.data))
+            setPreloaderActive(false)
+        })()
+    }, [activeMonth, activeYear])
+
     const renderCalendar = () => {
 
         let DayWeek = 0;
@@ -90,9 +103,13 @@ function Diary() {
                 <div className={style['days']}>
                     {daysArr.map(day => (
                         <>
-                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow {...{id: user?.id,date: {year: activeYear, month: activeMonth+1, day: day} }} closeWindow={setDialogWindowOpen} />}
+                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow {...{id: user?.id, date: {year: activeYear, month: activeMonth+1, day: day} }} closeWindow={setDialogWindowOpen} />}
                             <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
                                 {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
+                                {notes.length > 0&&notes.map((note) =>{
+                                    if(new Date(note.note_date).getDay() == day)
+                                        return <div className={style['description-circle']}></div>
+                                })}
                             </div>
                         </>
                     ))}

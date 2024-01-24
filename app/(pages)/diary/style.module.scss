@@ -76,6 +76,9 @@
 .days{
     display: grid;
     grid-template-columns: repeat(7, 1fr); 
+    box-sizing: border-box;
+    width: 99.9;
+    margin-left: 1px;
 }
 
 .cell{
@@ -84,6 +87,7 @@
     border: .5px solid white;
     cursor: pointer;
     box-sizing: border-box;
+    position: relative;
 }
 
 .dialog-window{
@@ -94,12 +98,22 @@
 }
 
 .cell__day-text{
-    margin-left: 5px;
+    margin-left: 10px;
     margin-top: 5px;
 }
 
 .weeks-day-text-mob{
     display: none;
+}
+
+.description-circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 2em;
+    background-color: #ff9d01;
+    position: absolute;
+    bottom: 20%;
+    left: 10px;
 }
 
 @media (max-width: 767px) {
@@ -136,5 +150,19 @@
             font-size: 24px;
             color: #f15bb5;
         }
+    }
+
+    .description-circle{
+        transform: translate(-50%, -50%);
+        left: 50%;
+    }
+    .cell__day-text{
+        text-align: center;
+    }
+    .cell{
+        height: 80px;
+    }
+    .days{
+        width: 99.4%;
     }
 }

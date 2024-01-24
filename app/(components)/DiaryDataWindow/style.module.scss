@@ -8,6 +8,7 @@
     padding-right: 60px;
     box-sizing: border-box;
 }
+
 .date-title{
     padding-top: 20px;
     font-size: 28px;
@@ -21,7 +22,7 @@
     resize: none;
     margin-top: 50px;
     border: none;
-    border-bottom: .5px solid #ffffff6a;
+    border-bottom: .5px solid #ffffff00;
     outline: none;
     background-color: #ffffff00;
     transition: .3s ease;
@@ -42,5 +43,40 @@
             color: #656565;
         }
         border-bottom: .5px solid #fff;
+    }
+}
+
+.send-request__button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: .3s ease;
+    &:disabled{
+        background-color: #ffffff78;
+    }
+}
+
+@media (max-width: 767px) {
+    .wrapper{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .diary-note__textarea{
+        &:focus{
+            height: 40vh;
+        }
+    }
+    .button__container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .send-request__button{
+        padding: 12px 24px;
+        margin-top: 20px;
     }
 }
