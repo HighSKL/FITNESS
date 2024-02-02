@@ -60,6 +60,35 @@
     }
 }
 
+// .delete-note{
+//     color: rgb(165, 0, 0);
+//     font-size: 25px;
+//     position: absolute;
+//     right: 50px;
+//     margin-top: 20px;
+//     cursor: pointer;
+// }
+
+.delete-note{
+    display: flex;
+    align-items: center;
+    color: rgb(244, 42, 42);
+    font-size: 25px;
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 12px 24px;
+    p{
+        // color: #fff;
+        font-size: 18px;
+
+    }
+}
+
+
 @media (max-width: 767px) {
     .wrapper{
         padding-left: 25px;

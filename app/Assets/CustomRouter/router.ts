@@ -8,5 +8,7 @@ export default class Router {
     public sendUserTo(path: string){
         this.router.push(path)
     }
-
+    public update(){
+        this.router.refresh()
+    }
 }

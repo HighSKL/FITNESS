@@ -10,14 +10,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import { getNotes } from '@/app/Assets/api_services/diary/service';
 import { NoteType } from '@/app/types';
-import ComponentPreloader from '@/app/Assets/ComponentPreloader/ComponentPreloader';
 
 function Diary() {
 
     const [activeYear, setActiveYear] = useState(new Date().getFullYear())
     const [activeMonth, setActiveMonth] = useState((new Date().getMonth()))
     const [notes, setNotes] = useState<NoteType[]>([])
-    const [preloaderActive, setPreloaderActive] = useState(true)
 
     const user = useSelector((state:RootState)=>state.userData.user)
 
@@ -64,7 +62,6 @@ function Diary() {
         (async () => {
             if(user)
                 setNotes(await getNotes(user.id, activeMonth+1, activeYear).then(res=>res.data))
-            setPreloaderActive(false)
         })()
     }, [activeMonth, activeYear])
 
@@ -88,7 +85,6 @@ function Diary() {
         else
             for (let i = 0; i < DayWeek - 1; i++)
                 daysArr.unshift(0);
-
                 
         return (
             <div className={style.cells}>
@@ -107,7 +103,7 @@ function Diary() {
                             <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
                                 {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
                                 {notes.length > 0&&notes.map((note) =>{
-                                    if(new Date(note.note_date).getDay() == day)
+                                    if(new Date(note.note_date).getDate() == day)
                                         return <div className={style['description-circle']}></div>
                                 })}
                             </div>
@@ -138,12 +134,10 @@ function Diary() {
                 <div className={style['back-to-profile-icon']} onClick={() => redirect.sendUserTo('/home')}><FaRegUser /></div>
             </header>
             <div className={style.calendar}>
-
                 {renderCalendar()}
             </div>
         </div>
     );
 }
 
-// export default Diary
 export default withAuth(Diary);

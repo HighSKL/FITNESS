@@ -23,7 +23,7 @@ export default function withModalWindow<T extends injectedProps>(WrappedComponen
             <div className={style.background} onClick={closeWindowHandler}>
                 <div className={style.window} style={{bottom:windowClose?'-100vh':'0'}}>
                     <div className={style['mob-close-window-line']} onClick={closeWindowHandler} ></div>
-                    <WrappedComponent {...props} />
+                    <WrappedComponent {...props.closeWindow} {...props} />
                 </div>
             </div>
         );

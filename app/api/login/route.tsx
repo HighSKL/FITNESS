@@ -3,22 +3,28 @@ import bcrypt from 'bcryptjs';
 import { sql } from "@vercel/postgres"
 import apiErrors from "../errorsCode/apiErrors";
 import { cookies } from "next/headers";
+import { secretToken } from "@/config";
+import jwt from "jsonwebtoken"
 
 export async function POST(req: NextRequest) {
     
     const {email, password} = await req.json()
 
-    const candidateUser = await sql`select id, password, refresh_token from special_users_data where email = ${email}`
+    const candidateUser = (await sql`select id, password, email from special_users_data where email = ${email}`).rows
 
-    if(candidateUser.rows.length == 0)
+    if(candidateUser.length == 0)
         return NextResponse.json(apiErrors.UserNotFound())
     
-    const hashPassword = await bcrypt.compare(password, candidateUser.rows[0].password)
+    const hashPassword = await bcrypt.compare(password, candidateUser[0].password)
 
     if(!hashPassword)
         return NextResponse.json(apiErrors.InvalidPassword())
 
-    cookies().set("refreshToken", candidateUser.rows[0].refresh_token, {maxAge: 30*24*60*60*1000, httpOnly:false})
+    let refreshToken = jwt.sign({userID: candidateUser[0].id, email: candidateUser[0].email}, secretToken , {expiresIn: '10d'})
+
+    await sql`UPDATE special_users_data SET refresh_token = ${refreshToken} WHERE id = ${candidateUser[0].id}`
+
+    cookies().set("refreshToken", refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:false})
 
     return NextResponse.json({ status: 200 });
 }

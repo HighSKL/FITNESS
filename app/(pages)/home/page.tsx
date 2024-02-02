@@ -1,27 +1,34 @@
 "use client"
-import { useState } from 'react';
-import style from './homePage.module.scss'
-import withAuth from '../../Assets/Hocs/withAuth';
-import { RootState } from '../../(storage)/store';
-import { op_san, ubuntu } from '../../Assets/fonts';
+import { changeActiveNoteDescription, getCurrentNote } from '@/app/Assets/api_services/diary/service';
 import Water from '../../(components)/(trackers)/Water/Water';
-import { ModalWidows } from '../../Assets/enums';
-
-import Lock from '../../Assets/LockTracker/Lock';
-import { useSelector } from 'react-redux';
-import LogOut from '@/app/Assets/LogOut/LogOut';
 import Router from '@/app/Assets/CustomRouter/router';
+import { op_san, ubuntu } from '../../Assets/fonts';
+import { diaryWorker } from '../diary/diaryWorker';
+import useInput from '@/app/Assets/Hooks/useInput';
+import { RootState } from '../../(storage)/store';
+import withAuth from '../../Assets/Hocs/withAuth';
+import Lock from '../../Assets/LockTracker/Lock';
+import { ModalWidows } from '../../Assets/enums';
+import LogOut from '@/app/Assets/LogOut/LogOut';
+import { useEffect, useState } from 'react';
+import style from './homePage.module.scss';
+import { useSelector } from 'react-redux';
+import { NoteType } from '@/app/types';
 
 function HomePage() {
 
     const router = new Router()
 
-    const { user, trackers } = useSelector((state: RootState)=>({
+    const { user, trackers } = useSelector((state: RootState) => ({
         user: state.userData.user,
         trackers: state.mainData.trackers
     }))
 
     const [activeModalWindow, setActiveModalWindow] = useState<ModalWidows | null>(null)
+    const [chosenNote, setChosenNote] = useState<NoteType | null>(null)
+    const [requestSended, setRequestSended] = useState(false)
+
+    const diaryInputText = useInput('')
 
     const trackersRender = trackers.map(tracker => (
         <div className={style.tracker} key={tracker.trackerID} onClick={() => { setActiveModalWindow(tracker.windowType) }}>
@@ -35,9 +42,35 @@ function HomePage() {
         </div>
     ))
 
+    useEffect(() => {
+        (async () => {
+            const { day, month, year } = diaryWorker.getTodayDate()
+            if (user) {
+                const note = await getCurrentNote(user.id, day, month, year).then(res => res.data)
+                if (note.length != 0){
+                    setChosenNote(note[0])
+                    diaryInputText.setValue(note[0].description)
+                }
+            }
+        })()
+    }, [])
+
+    const addDiary = async () => {
+        const { day, month, year } = diaryWorker.getTodayDate()
+        setRequestSended(true)
+        if (user)
+            diaryWorker.addNewNote(user.id, day, month, year, diaryInputText.value).then(()=>setRequestSended(false))
+    }
+
+    const changeNoteDescription = async () => {
+        setRequestSended(true)
+        chosenNote && 
+        await changeActiveNoteDescription( chosenNote.id, diaryInputText.value ).then(() => setRequestSended(false))
+    }
+
     return (
         <>
-            {activeModalWindow == ModalWidows.WaterWindow && <Water closeWindow = {setActiveModalWindow} />}
+            {activeModalWindow == ModalWidows.WaterWindow && <Water closeWindow={setActiveModalWindow} />}
             <div className={op_san.className}>
                 <div className={style.wrapper}>
                     <LogOut />
@@ -47,11 +80,19 @@ function HomePage() {
                         <div className={style.journal_block}>
                             <p>Продолжайте вести ваш дневник 🥇</p>
                             <div className={style.diary_container}>
-                                <textarea name="" id="" placeholder={'Начните вводить свои заметки или еще что-либо : )'}></textarea>
-                                <button className={style.diary_button} onClick={()=>router.sendUserTo('diary')}>Дневник 📔</button>
+                                <textarea name="" id="" placeholder={'Начните вводить свои заметки или еще что-либо : )'} {...diaryInputText}
+                                    style={{ minHeight: diaryInputText.value == '' ? 'auto' : '75px' }}/>
+                                <div className={style['buttons-menu']}>
+                                    <button className={style.diary_button} onClick={() => router.sendUserTo('diary')}>Дневник 📔</button>
+                                    {
+                                        chosenNote?
+                                        <button className={style['buttons-menu__add-note']} onClick={changeNoteDescription} disabled={diaryInputText.value == ''||requestSended}>Изменить</button>:
+                                        <button className={style['buttons-menu__add-note']} onClick={addDiary} disabled={diaryInputText.value == ''||requestSended} >Добавить запись</button>
+                                    }
+                                </div>
                             </div>
                         </div>
-                        
+
                         <div className={style.trackers_block}>
                             <div className={ubuntu.className}>
                                 <h1 className={style.block_title}>Трекеры и здоровье</h1>
@@ -66,5 +107,5 @@ function HomePage() {
         </>
     );
 }
-export default HomePage
-// export default withAuth(HomePage)
+// export default HomePage
+export default withAuth(HomePage)
