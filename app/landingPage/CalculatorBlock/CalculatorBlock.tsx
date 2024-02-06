@@ -59,55 +59,57 @@ export default function CalculatorBlock() {
             <div className={style.wrapper} id='calculator_block'>
                 <div className={style.data_container}>
                     <h1 className={style.title}><span>ВАШ</span> КАЛЬКУЛЯТОР КАЛОРИЙ</h1>
-                    <div className={style.activity_container}>
-                        {activitysRender}
-                    </div>
-                    <Formik
-                        initialValues={{ userWeight: '', userHeight: '', userAge: '', userSex: '' }}
-                        onSubmit={(values) => {
-                            if (
-                                sexFieldValudate() &&
-                                fieldValidate(/^\d+$/, FieldError.HeightField, values.userHeight) &&
-                                fieldValidate(/^\d+$/, FieldError.WeightField, values.userWeight) &&
-                                fieldValidate(/^\d+$/, FieldError.AgeField, values.userAge)
-                            ) {
-                                setFieldErrors(null)
-                                setDCI(Math.floor(((parseInt(values.userWeight) * 10) + (parseInt(values.userHeight) * 6.25) - (parseInt(values.userAge) * 5) + (userSex == Sex.male ? 5 : -161)) * activity))
-                            }
-                        }}
-                    >
-                        {() => (
-                            <Form className={style.form_block}>
-                                <h3>Укажите ваш пол</h3>
-                                <div className={style.checkbox_container}>
-                                    <div className={style.male_checkbox_block}>
-                                        <input type="checkbox" name="" checked={userSex == Sex.male ? true : false} id="" onClick={() => { setUserSex(Sex.male) }} />
-                                        <p>мужской</p>
+                    <div className={style['content-container']}>
+                        <div className={style.activity_container}>
+                            {activitysRender}
+                            <div className={style.result_block}>
+                                <p className={style.result_text}>Рекомендуемая дневная норма калорий ~ <span>{DCI}</span></p>
+                                <p className={style.subtitle}>*более подробные данные можно получить в<br />нашем приложении</p>
+                            </div>
+                        </div>
+                        <Formik
+                            initialValues={{ userWeight: '', userHeight: '', userAge: '', userSex: '' }}
+                            onSubmit={(values) => {
+                                if (
+                                    sexFieldValudate() &&
+                                    fieldValidate(/^\d+$/, FieldError.HeightField, values.userHeight) &&
+                                    fieldValidate(/^\d+$/, FieldError.WeightField, values.userWeight) &&
+                                    fieldValidate(/^\d+$/, FieldError.AgeField, values.userAge)
+                                ) {
+                                    setFieldErrors(null)
+                                    setDCI(Math.floor(((parseInt(values.userWeight) * 10) + (parseInt(values.userHeight) * 6.25) - (parseInt(values.userAge) * 5) + (userSex == Sex.male ? 5 : -161)) * activity))
+                                }
+                            }}
+                        >
+                            {() => (
+                                <Form className={style.form_block}>
+                                    <h3>Укажите ваш пол</h3>
+                                    <div className={style.checkbox_container}>
+                                        <div className={style.male_checkbox_block}>
+                                            <input type="checkbox" name="" checked={userSex == Sex.male ? true : false} id="" onClick={() => { setUserSex(Sex.male) }} />
+                                            <p>мужской</p>
+                                        </div>
+                                        <div className={style.female_checkbox_block}>
+                                            <input type="checkbox" name="" checked={userSex == Sex.female ? true : false} id="" onClick={() => { setUserSex(Sex.female) }} />
+                                            <p>женский</p>
+                                        </div>
+                                        {fieldErrors == FieldError.SexField ? <p className={style.error_text}>Выберите свой пол</p> : null}
                                     </div>
-                                    <div className={style.female_checkbox_block}>
-                                        <input type="checkbox" name="" checked={userSex == Sex.female ? true : false} id="" onClick={() => { setUserSex(Sex.female) }} />
-                                        <p>женский</p>
+                                    <div className={style.fields_container}>
+                                        <Field type="textarea" name="userHeight" className={style.form} placeholder="Введите ваш рост (см)" />
+                                        {fieldErrors == FieldError.HeightField ? <p className={style.error_text}>Укажите ваш рост в числовом диапозоне</p> : null}
+                                        <Field type="textarea" name="userWeight" className={style.form} placeholder="Введите ваш вес (кг)" />
+                                        {fieldErrors == FieldError.WeightField ? <p className={style.error_text}>Укажите ваш вес в числовом диапозоне</p> : null}
+                                        <Field type="textarea" name="userAge" className={style.form} placeholder="Введите ваш возраст" />
+                                        {fieldErrors == FieldError.AgeField ? <p className={style.error_text}>Укажите ваш возраст в числовом диапозоне</p> : null}
                                     </div>
-                                    {fieldErrors == FieldError.SexField ? <p className={style.error_text}>Выберите свой пол</p> : null}
-                                </div>
-                                <div className={style.fields_container}>
-                                    <Field type="textarea" name="userHeight" className={style.form} placeholder="Введите ваш рост (см)" />
-                                    {fieldErrors == FieldError.HeightField ? <p className={style.error_text}>Укажите ваш рост в числовом диапозоне</p> : null}
-                                    <Field type="textarea" name="userWeight" className={style.form} placeholder="Введите ваш вес (кг)" />
-                                    {fieldErrors == FieldError.WeightField ? <p className={style.error_text}>Укажите ваш вес в числовом диапозоне</p> : null}
-                                    <Field type="textarea" name="userAge" className={style.form} placeholder="Введите ваш возраст" />
-                                    {fieldErrors == FieldError.AgeField ? <p className={style.error_text}>Укажите ваш возраст в числовом диапозоне</p> : null}
-                                </div>
-                                <div className={style.button_container}>
+
                                     <button type='submit' className={style.button}>Рассчитать</button>
-                                </div>
-                            </Form>
-                        )}
-                    </Formik>
-                </div>
-                <div className={style.result_block}>
-                    <p className={style.result_text}>Рекомендуемая дневная норма калорий ~ <span>{DCI}</span></p>
-                    <p className={style.subtitle}>*более подробные данные можно получить в<br />нашем приложении</p>
+
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
                 </div>
             </div>
         </div>

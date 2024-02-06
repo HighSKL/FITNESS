@@ -8,6 +8,7 @@
 
 .motivation_block{
     margin-top: 140px;
+    margin-left: 60px;
 }
 
 .top_hr, .bottom_hr{
@@ -18,17 +19,17 @@
 
 .top_hr{
     width: 300px;
-    margin-left: 60px;
+    margin-left: 0px;
 }
 
 .bottom_hr{
     width: 449px;
-    margin-left: 170px;
+    margin-left: 110px;
 }
 
 .text{
     display: block;
-    margin-left: 170px;
+    margin-left: 110px;
     margin-bottom: 20px;
     color: white;
     .line_1{
@@ -75,9 +76,84 @@
     background-color: black;
     width: 170%;
     height: 177px;
-    filter: blur(50px);
+    filter: blur(40px);
     border-radius: 50%;
     position: absolute;
     margin-top: 130px;
     margin-left: -20%;
+}
+
+@media (max-width: 1130px) {
+    .bg_image{
+        opacity: 50%;
+    }
+    .motivation_block{
+        position: relative;
+        z-index: 999;
+    }
+}
+
+@media (max-width: 890px) {
+    .bg_image{
+        opacity: 20%;
+    }
+}
+
+@media (max-width: 690px) {
+    .wrapper{
+        height: auto;
+        padding-bottom: 100px;
+    }
+    .motivation_block{
+        margin-left: 0;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 200px;
+        padding-bottom: 170px;
+        display: flex;
+        flex-flow: column;
+    }
+    .top_hr, .bottom_hr{
+        width: 250px;
+        margin-left: 0;
+        margin: auto;
+    }
+    .text{
+        margin-left: 0;
+        text-align: center;
+    }
+    .button{
+        margin-left: 0;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    .shadow{
+        position: absolute;
+        top: 80%;
+        z-index: -1;
+        margin-left: -30%;
+        height: 300px;
+    }
+
+    .line_1{
+        font-size: 54px !important;
+    }
+    .line_2{
+        font-size: 54px !important;
+    }
+    .line_3{
+        font-size: 74px !important;
+    }
+    .line_4{
+        font-size: 42px !important;
+    }
+
+
+    .button{
+        width: 253px;
+        height: 66px;
+        border-radius: 20px;
+        font-size: 17px;
+    }
+
 }

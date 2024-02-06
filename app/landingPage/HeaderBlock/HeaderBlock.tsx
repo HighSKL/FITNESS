@@ -11,10 +11,11 @@ export default function HeaderBlock() {
     return (
         <div className={op_san.className}>
             <div className={style.wrapper}>
+
                 <div className={style.navigation_block}>
                     <div className={style.logo_block}>
                         <div className={blinker.className}>
-                            <p className={style.logo}>FITNESS</p>
+                            <h1 className={style.logo}>FITNESS</h1>
                         </div>
                     </div>
                     <div className={style.navbar}>
@@ -23,19 +24,18 @@ export default function HeaderBlock() {
                         <Link href={"/sign"} className={style.text}>Войти</Link>
                     </div>
                 </div>
+
                 <div className={style['header-content']}>
                     <div className={style['header-content__left-group']}>
                         <div className={style.header_text}>
-                            <h1 className={style.sticker_text}>🥊 🥇</h1>
+                            <p className={style.sticker_text}>🥊 🥇</p>
                             <h1 className={style.motivation_text}>Начните новую<br />спортивную жизнь</h1>
-                            <h1 className={style.sub_motivation_text}>А мы вам с этим поможем
-                            </h1>
+                            <h3 className={style.sub_motivation_text}>А мы вам с этим поможем</h3>
                         </div>
                         <button className={style.button} onClick={()=>{router.push('/sign')}}>Начать</button>
                     </div>
                     <div className={style['header-content__right-group']}>
                     </div>
-                    
                 </div>
                 
                 <div className={style.transition_block}></div>

@@ -2,13 +2,9 @@ $vv: #ffff;
 
 .wrapper{
     width: 100%;
-    height: 825px;
+    height: auto;
     float: left;
-}
-
-.data_container{
-    display: block;
-    float: left;
+    padding-bottom: 50px;
 }
 
 .title{
@@ -22,21 +18,31 @@ $vv: #ffff;
     }
 }
 
+.content-container{
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    width: 80% !important;
+    gap: 50px;
+    margin: 0 auto;
+}
+
 .activity_container{
-    margin-left: 170px;
-    margin-top: 45px;
-    float: left;
     .activity_block{
         cursor: pointer;
         color: white;
         width: 568px;
-        height: 47px;
+        height: auto;
+        box-sizing: border-box;
+        padding: 12px 0;
         background-color: rgba(57, 59, 67, 0.60);;
         border-radius: 20px;
-        display: flex;
         position: relative;
         align-items: center;
         margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr .20fr;
         p{
             float: left;
             margin-left: 29px;
@@ -56,9 +62,10 @@ $vv: #ffff;
 }
 
 .form_block{
-    float: right;
-    margin-left: 140px;
-    margin-top: 45px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-self: center;
     h3{
         text-align: center;
         color: white;
@@ -68,7 +75,8 @@ $vv: #ffff;
 }
 
 .checkbox_container{
-margin-left: 15px;
+    margin-left: 15px;
+    margin-top: 20px;
 }
 
 .male_checkbox_block,.female_checkbox_block{
@@ -111,11 +119,6 @@ margin-left: 15px;
     font-weight: 400;
 }
 
-.button_container{
-    margin-left: 50px;
-    margin-top: 30px;
-}
-
 .button{
     width: 196px;
     height: 45px;
@@ -128,6 +131,7 @@ margin-left: 15px;
     font-weight: 400;
     box-shadow: 0px 0px 25px 0px rgba(132, 0, 0, 0.60);
     transition: .3s ease;
+    margin-top: 15px;
     &:hover{
         transform: scale(.96);
     }
@@ -136,7 +140,7 @@ margin-left: 15px;
 .result_block{
     float: left;
     color: white;
-    margin-left: 200px;
+    margin-left: 30px;
     margin-top: 30px;
 }
 
@@ -159,5 +163,38 @@ margin-left: 15px;
     text-align: center;
     font-size: 14px;
     font-weight: 400;
-    margin-top: -7px;
+    margin-top: 10px;
+}
+
+@media (max-width: 1130px) {
+    .title{
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 965px) {
+    .title{
+        font-size: 35px;
+    }
+    .content-container{
+        width: 100% !important;
+        padding-top: 50px;
+        grid-template-columns: 1fr;
+        order: 1;
+    }
+    .activity_container{
+        order: 2;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .activity_container{
+        width: calc(100% - 40px) !important;
+        margin: 0 auto;
+        .activity_block{
+            width: 100%;
+        }
+    }
 }

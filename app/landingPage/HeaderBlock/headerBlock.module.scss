@@ -47,12 +47,12 @@ $left_block_margin: 85px;
         font-size: 55px;
         font-weight: 700;
         line-height: 55px;
-        margin-top: -30px;
     }
     .sub_motivation_text{
         color: white;
         font-size: 22px;
         font-weight: 400;
+        margin-top: 15px;
     }
 }
 
@@ -65,7 +65,7 @@ $left_block_margin: 85px;
     border: none;
     box-shadow: 0px 0px 50px 0px rgba(132, 0, 0, 0.50);
     margin-left: $left_block_margin;
-    margin-top: 30px;
+    margin-top: 40px;
     cursor: pointer;
 
     color: white;
@@ -91,109 +91,6 @@ $left_block_margin: 85px;
     margin: auto;
 }
 
-.external-circle{
-    background-color: #1D1E22;
-    width: 400px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-}
-
-$rotation-time: 17s;
-
-.external-circle__line-rotate-0, .external-circle__line-rotate-90, .external-circle__line-rotate-45, 
-.external-circle__line-rotate-minus-45, .external-circle__line-rotate-minus-22-5, .external-circle__line-rotate-22-5,
-.external-circle__line-rotate-minus-67-5, .external-circle__line-rotate-67-5{
-    width: 1000px;
-    height: 30px;
-    background-color: rgb(151, 193, 92);
-    position: absolute;
-    animation: rotation0 $rotation-time linear infinite;
-    // box-shadow: 0px 0px 5px 5px rgba(130, 167, 78, 0.439);
-}
-
-
-.external-circle__line-rotate-0{ 
-    animation-delay:  0ms;
-}   
-
-.external-circle__line-rotate-22-5{ 
-    animation-delay: 1000ms;
-}
-
-.external-circle__line-rotate-minus-22-5{
-    animation-delay: 2000ms;
-}
-
-.external-circle__line-rotate-67-5{
-    animation-delay: 3000ms;
-}
-
-.external-circle__line-rotate-minus-67-5{
-    animation-delay: 4000ms;
-}
-
-.external-circle__line-rotate-45{
-    animation-delay: 5000ms;
-}
-
-.external-circle__line-rotate-minus-45{
-    animation-delay: 6000ms;
-}
-
-.external-circle__line-rotate-90{
-    animation-delay: 7000ms;
-}
-
-
-// .external-circle__line-rotate-0{
-//     animation: rotation0 $rotation-time linear infinite;
-// }   
-
-
-// .external-circle__line-rotate-22-5{
-//     animation: rotation225 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-minus-22-5{
-//     animation: rotationMinus225 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-67-5{
-//     animation: rotation675 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-minus-67-5{
-//     animation: rotationMinus675 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-45{
-//     animation: rotation45 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-minus-45{
-//     animation: rotationMinus45 $rotation-time linear infinite;
-// }
-
-// .external-circle__line-rotate-90{
-//     animation: rotation90 $rotation-time linear infinite;
-// }
-
-.interior-circle{
-    z-index: 9999;
-    background-color: #1D1E22;
-    width: 380px;
-    height: 380px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
-
 .header-content{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -215,143 +112,106 @@ $rotation-time: 17s;
     margin-top: 90px;
 }
 
+@media (max-width: 767px) {
 
-@keyframes rotation0 {
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes rotation90 {
-    from{
-        transform: rotate(90deg);
-    }
-    to{
-        transform: rotate(450deg);
-    }
-}
-
-@keyframes rotation45 {
-    from{
-        transform: rotate(45deg);
-    }
-    to{
-        transform: rotate(405deg);
-    }
-}
-
-@keyframes rotationMinus225 {
-    from{
-        transform: rotate(-25deg);
-    }
-    to{
-        transform: rotate(335deg);
-    }
-}
-
-@keyframes rotation225 {
-    from{
-        transform: rotate(25deg);
-    }
-    to{
-        transform: rotate(385deg);
-    }
-}
-
-@keyframes rotationMinus675 {
-    from{
-        transform: rotate(-67.5deg);
-    }
-    to{
-        transform: rotate(292.5deg);
-    }
-}
-
-@keyframes rotation675 {
-    from{
-        transform: rotate(67.5deg);
-    }
-    to{
-        transform: rotate(427.5deg);
-    }
-}
-
-@keyframes rotationMinus45 {
-    from{
-        transform: rotate(-45deg);
-    }
-    to{
-        transform: rotate(315deg);
-    }
-}
-
-@keyframes rotation90 {
-    from{
-        transform: rotate(90deg);
-    }
-    to{
-        transform: rotate(450deg);
-    }
-}
-
-
-@media (max-width: 390px) {
     .wrapper{
-        height: 627px;
-    }
-    .logo{
-        text-align: center;
+        height: auto !important;
+        overflow: visible;
     }
     .navigation_block{
-        margin-top: 65px;
+        margin-left: 0;
+        margin-top: 55px !important;
         text-align: center;
     }
     .navbar{
-        overflow: hidden;
-        width: 100%;
-        margin-left: 0;
+        margin-top: 20px;
+        gap: 13px;
         display: flex;
         flex-direction: column;
+        margin-left: 0;
 
+        .text{
+            margin-right: 0px;
+            font-size: 18px;
+        }
     }
-    .people_img_container{
-        margin-top: 151px;
-        left: 0;
-        z-index: -1;
-        opacity: 15%;
-        left: -300px;
-        transform: scale(.5);
-        top:-400px;
-    }
-    .header_text{
+
+    .logo{
         color: white;
-        
-        margin-top: 150px;
-        margin-left: 44px;
-        z-index: 2;
+        font-size: 47px !important;
+    }
+
+
+    .header-content{
+        display: flex;
+        justify-content: center;
+        padding: 0 30px;
+    }
+    .header-content__left-group{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+
+    
+    .header_text{
+        margin-top: 90px;
+        margin-left: 0px;
+        .sticker_text{
+            font-size: 40px;
+            text-align: center;
+        }
         .motivation_text{
-            font-size: 32px;
+            font-size: 42px;
             font-weight: 700;
             line-height: 40px;
+            text-align: center;
+            margin-top: 0;
         }
         .sub_motivation_text{
-            font-size: 16px;
-            margin-top: -20px;
+            font-size: 20px;
+            margin-top: 15px;
             font-weight: 400;
+            text-align: center;
         }
     }
+
     .button{
         width: 150px;
         height: 40px;
         font-size: 15px;
         font-weight: 500;
-        margin-left: 45px;
-        margin-top: 0px;
+        margin-left: 0px;
+        margin-top: 40px;
     }
+
     .transition_block{
-        margin-top: 600px;
+        position: absolute;
+        top: 105%;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .header_text{
+        .sticker_text{
+            font-size: 30px;
+        }
+        .motivation_text{
+            font-size: 35px;
+            margin-top: 0;
+        }
+        .sub_motivation_text{
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
+
+    .header-content{
+        padding: 0 10px;
+    }
+
+    .button{
+        margin-top: 30px;
     }
 }

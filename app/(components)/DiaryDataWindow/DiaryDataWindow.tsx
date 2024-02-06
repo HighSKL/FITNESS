@@ -76,5 +76,5 @@ function DiaryDataWindow(props: PropsType) {
         </div>
     );
 }
-
+ 
 export default withModalWindow(DiaryDataWindow);

@@ -13,8 +13,8 @@ export default function AdvantagesBlock() {
         <div className={inter.className}>
             <div className={style.wrapper}  >
                 <div className={style.title_text_container} id='advantages_block'>
-                    <h1 >НАШИ ПРЕИМУЩЕСТВА 💪</h1>
-                    <p>ИЛИ ВСЕ ЧТО МОЖЕТ БЫТЬ ПОЛЕЗНЫМ ⭐</p>
+                    <h1 >НАШИ ПРЕИМУЩЕСТВА&nbsp;💪</h1>
+                    <p>ИЛИ ВСЕ ЧТО МОЖЕТ БЫТЬ ПОЛЕЗНЫМ&nbsp;⭐</p>
                 </div>
                 <div className={style.advantages_container}>
                     <div className={style.block_1}>
