@@ -60,14 +60,6 @@
     }
 }
 
-// .delete-note{
-//     color: rgb(165, 0, 0);
-//     font-size: 25px;
-//     position: absolute;
-//     right: 50px;
-//     margin-top: 20px;
-//     cursor: pointer;
-// }
 
 .delete-note{
     display: flex;
@@ -75,14 +67,13 @@
     color: rgb(244, 42, 42);
     font-size: 25px;
     position: absolute;
-    bottom: 50px;
+    bottom: 10vh;
     left: 20px;
     gap: 10px;
     cursor: pointer;
     border-radius: 20px;
     padding: 12px 24px;
     p{
-        // color: #fff;
         font-size: 18px;
 
     }
@@ -107,5 +98,8 @@
     .send-request__button{
         padding: 12px 24px;
         margin-top: 20px;
+    }
+    .delete-note{
+        bottom: 20vh;
     }
 }

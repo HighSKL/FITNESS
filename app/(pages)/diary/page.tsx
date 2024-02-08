@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import { getNotes } from '@/app/Assets/api_services/diary/service';
 import { NoteType } from '@/app/types';
+import { diaryWorker } from './diaryWorker';
 
 function Diary() {
 
@@ -61,9 +62,9 @@ function Diary() {
     useEffect(()=>{
         (async () => {
             if(user)
-                setNotes(await getNotes(user.id, activeMonth+1, activeYear).then(res=>res.data))
+                setNotes(await diaryWorker.getNotes(user.id, activeMonth+1, activeYear))
         })()
-    }, [activeMonth, activeYear])
+    }, [activeMonth, activeYear, [] ])
 
     const renderCalendar = () => {
 

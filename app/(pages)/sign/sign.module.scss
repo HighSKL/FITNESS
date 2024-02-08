@@ -20,7 +20,7 @@
     z-index: 1;
     .animation_line{
         z-index: 2;
-        width: 150%;
+        width: 200%;
         height: 100px;
         background-color: white;
         position: absolute;
@@ -44,6 +44,7 @@
     font-size: 32px;
     font-weight: 600;
     margin-top: 55px;
+    padding-bottom: 10px;
 }
 
 .email_field, .password_field{
@@ -142,5 +143,27 @@
     }
     to{
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width:550px) {
+    .block_container{
+        width: calc(100% - 40px);
+        margin: auto;
+    }
+
+    .button{
+        width: 226px;
+        height: 35px;
+    }
+    .email_field, .password_field{
+        width: 206px;
+        height: 41px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    .funс_block{
+        width: 221px;
     }
 }
