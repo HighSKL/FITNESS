@@ -7,6 +7,9 @@ const initialState = {
         {trackerID: 2, trackerColor: "#1380DC", icon: "💧", trackerName: "Water Tracker", windowType: ModalWidows.WaterWindow},
         {trackerID: 3, trackerColor: "#EF3535", icon: "⚖️", trackerName: "Weight Tracker", windowType: ModalWidows.WeightWindow},
         {trackerID: 4, trackerColor: "#FA9D48", icon: "🥗", trackerName: "Food Tracker", windowType: ModalWidows.FoodWindow}
+    ],
+    courses: [
+        {id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome'},
     ]
 }
 
