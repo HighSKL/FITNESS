@@ -1,30 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#### The project is available at the link https://fitness-sepia.vercel.app
 
-## Getting Started
+## Meet the new fitness web application
+```Start keeping your diary, record your training results, and leave important notes and observations!) 📔```<br/> 
+```The water tracker will help you keep track of the intake of the optimal amount of water per day, which can have a beneficial effect on the quality of your life. 💧```<br/>
+```Keep track of calories with food and workout trackers. 🥗🏃‍♀️```<br/>
 
-First, run the development server:
 
+*The project is under development so some of the stated functions may not be implemented
+
+
+### To run a project in dev mode, you will need a ```yarn``` package manager.
 ```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Stack: 
+<div>
+  <img alt='next.js' src="https://i.ytimg.com/vi/GF8iGMHYZJE/maxresdefault.jpg" width="100"/>
+  <img alt='sass' src="https://stackup.ru/wp-content/uploads/2019/02/sass-logo1.png" width="72"/>
+  <img alt='typescript' src="https://avatars.mds.yandex.net/i?id=a80eef91233b530855d6c28385a8f8515b7bb178-11516533-images-thumbs&n=13" width="54"/>
+  <img alt='redux' src="https://postfolio.onrender.com/icons/skills/redux.jpeg" width="54"/>
+  <img alt='vercel' src="https://yt3.ggpht.com/ytc/AAUvwngUFWmGOVAwzs5aD6FqZ4DPJO-LJL7aEME3Ib3Bzg=s900-c-k-c0x00ffffff-no-rj" width="56"/>
+</div>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
