@@ -4,10 +4,26 @@ import style from '../style.module.scss'
 import { compose } from 'redux';
 import withAuth from '@/app/Assets/Hocs/withAuth';
 import Router from '@/app/Assets/CustomRouter/router';
+import useInputLimit from '@/app/Assets/Hooks/useInputLimit';
+import { setBrief } from '@/app/Assets/api_services/home/service';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/(storage)/store';
 
 function Wellcome() {
 
     const router = new Router()
+    const weight = useInputLimit(30, 250)
+    const height = useInputLimit(100, 250)
+
+
+    const user_id = useSelector((state: RootState) => state.userData.user?.id)
+
+    const sendRequest = async () => {
+        if (user_id) {
+            await setBrief(true, user_id)
+            router.sendUserTo('/home')
+        }
+    }
 
     return (
         <main className={style.wrapper}>
@@ -37,9 +53,9 @@ function Wellcome() {
             <br />
             <p>С помощью них вы можете отслеживать показания калорий, потребляемой воды, упражнениях, весе и тд.<br />
                 В каждом трекере есть полоска заполнения некоторой цели которую вы можете корректировать под свою цель. Полоски
-                в трекере похожи на полоски активности в <a 
-                target='_blank'
-                href='https://yablyk.com/350681-what-do-the-activity-rings-in-apple-watch/?ysclid=lsrpa4jd2c448176168'>
+                в трекере похожи на полоски активности в <a
+                    target='_blank'
+                    href='https://yablyk.com/350681-what-do-the-activity-rings-in-apple-watch/?ysclid=lsrpa4jd2c448176168'>
                     <b>Apple Fitness</b>
                 </a>.
                 Заполнение данных полосок поможет держать мотивацию достижения собственных целей.</p>
@@ -56,14 +72,17 @@ function Wellcome() {
             </p>
             <br /><br />
             <div className={style.parameters}>
-                <div className={style.parameter}>
-                    <p className={style['parameter-title']}>Вес</p>
-                    <input type="text" />
+                <div className={style['container']}>
+                    <div className={style.parameter}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>Вес (кг)</p>
+                        <input type="number" {...weight} required className={`${style['parameter-input']} ${style['weight']}`} />
+                    </div>
+                    <div className={style.parameter}>
+                        <p className={style['parameter-title']}>Рост (см)</p>
+                        <input type="number" {...height} required className={style['parameter-input']} />
+                    </div>
                 </div>
-                <div className={style.parameter}>
-                    <p className={style['parameter-title']}>Рост</p>
-                    <input type="text" />
-                </div>
+                <button type='button' className={style['send-btn']} onClick={sendRequest}>Отправить</button>
             </div>
 
 
@@ -75,5 +94,5 @@ function Wellcome() {
     );
 }
 
-// export default compose(withAuth)(Wellcome)
-export default Wellcome
+export default compose(withAuth)(Wellcome)
+// export default Wellcome

@@ -1,24 +1,26 @@
-.wrapper{
+.wrapper {
     width: 60%;
     margin: auto;
     padding: 40px 0;
     min-height: 100vh;
+
     // background-color: rgba(0, 0, 0, 0.306);
-    a{
+    a {
         color: #fff;
 
     }
-    ul{
+
+    ul {
         margin-left: 20px;
     }
-    
-    hr{
+
+    hr {
         margin: 20px 0;
         color: #ffffff9c;
     }
 }
 
-.back-button{
+.back-button {
     padding: 12px 20px;
     margin-bottom: 40px;
     border-radius: 10px;
@@ -29,20 +31,20 @@
     cursor: pointer;
 }
 
-.title{
+.title {
     font-size: 35px;
     text-align: center;
     margin-bottom: 30px;
 }
 
-.quote{
+.quote {
     margin: auto;
     text-align: left;
     max-width: 80%;
     margin-top: 50px;
 }
 
-.mark{
+.mark {
     padding: 5px;
     background-color: rgb(230, 230, 61);
     color: #000;
@@ -50,22 +52,81 @@
     margin-bottom: 20px;
 }
 
-.parameters{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.parameters {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+
+        .parameter {
+            justify-self: center;
+            text-align: center;
+
+            // .parameter-title {}
+
+            .parameter-input {
+                width: 10em;
+                margin-top: 10px;
+                border-radius: 5px;
+                border: none;
+                font-size: 20px;
+                appearance: textfield;
+                text-align: center;
+                outline: none;
+                transition: .5s ease;
+                padding: 3px;
+
+                &:focus {
+                    padding: 10px;
+                }
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.send-btn {
+    margin-top: 30px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid rgb(46, 188, 49);
+    background: none;
+    transition: .3s ease;
+
+    &:hover {
+        transform: scale(.97);
+    }
 }
 
 
-
-
 @media (max-width: 767px) {
-    .wrapper{
+    .wrapper {
         width: 90%;
     }
-    .title{
+
+    .title {
         font-size: 30px;
     }
-    .parameters{
-        grid-template-columns: 1fr;
+
+
+    .parameters {
+        .container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
     }
+
 }

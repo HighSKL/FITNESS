@@ -10,7 +10,7 @@ export type UserDataType = {
     weight: number|null,
     height: number|null,
     userImg: string|null,
-    isWellcomeBriefingComplete: boolean;
+    iswellcomebriefingcomplete: boolean;
     status?: number
 }
 

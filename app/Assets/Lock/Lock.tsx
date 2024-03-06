@@ -5,14 +5,15 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 
 export function Lock({
-    children, onClick
+    children, onClick, lockWhere
 }: {
     children: ReactNode,
-    onClick: any
+    onClick: any,
+    lockWhere: any
 }) {
     return (
         <>
-            <div className={style['lock-wrapper']} onClick={() => onClick()}>
+            <div className={style['lock-wrapper']} style={{display: lockWhere?'flex':'none'}} onClick={() => onClick()}>
                 <p><FaLock /></p>
             </div>
             {children}

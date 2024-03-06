@@ -18,6 +18,7 @@ import { NoteType } from '@/app/types';
 function HomePage() {
 
     const router = new Router()
+    
 
     const { user, trackers, courses } = useSelector((state: RootState) => ({
         user: state.userData.user,
@@ -34,7 +35,8 @@ function HomePage() {
 
     const trackersRender = trackers.map(tracker => (
         <div className={style.tracker} key={tracker.trackerID} >
-            <Lock onClick={() => setReasonShow(true)}>
+            
+            <Lock onClick={() => setReasonShow(true)} lockWhere={user?.iswellcomebriefingcomplete===false}>
                 <div className={style.tracker_content} onClick={() => { setActiveModalWindow(tracker.windowType) }}>
                     <div className={style.tracker_icon}>
                         <p>{tracker.icon}</p>
@@ -129,5 +131,5 @@ function HomePage() {
     );
 }
 
-export default HomePage
-// export default withAuth(HomePage)
+// export default HomePage
+export default withAuth(HomePage)
