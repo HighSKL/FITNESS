@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import Preloader from '../Preloader/Preloader';
+import Preloader from '../../(components)/Preloader/Preloader';
 import { getProfile } from '../api_services/api_service';
 import { ErrorResponesType, UserDataType } from '@/app/types';
 import { useDispatch, useSelector } from 'react-redux';

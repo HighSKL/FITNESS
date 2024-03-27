@@ -5,7 +5,7 @@ import { MonthsRusLang } from '@/app/Assets/enums';
 import { useEffect, useState } from 'react';
 import style from './style.module.scss'
 import { NoteType } from '@/app/types';
-import ComponentPreloader from '@/app/Assets/ComponentPreloader/ComponentPreloader';
+import ComponentPreloader from '@/app/(components)/ComponentPreloader/ComponentPreloader';
 import useInput from '@/app/Assets/Hooks/useInput';
 import { diaryWorker } from '@/app/(pages)/diary/diaryWorker';
 import { FaRegTrashCan } from "react-icons/fa6";

@@ -7,18 +7,18 @@ import { diaryWorker } from '../diary/diaryWorker';
 import useInput from '@/app/Assets/Hooks/useInput';
 import { RootState } from '../../(storage)/store';
 import withAuth from '../../Assets/Hocs/withAuth';
-import { Lock, ShowReason } from '../../Assets/Lock/Lock';
+import { Lock, ShowReason } from '../../(components)/Lock/Lock';
 import { ModalWidows } from '../../Assets/enums';
-import LogOut from '@/app/Assets/LogOut/LogOut';
+import LogOut from '@/app/(components)/LogOut/LogOut';
 import { useEffect, useState } from 'react';
 import style from './homePage.module.scss';
 import { useSelector } from 'react-redux';
 import { NoteType } from '@/app/types';
+import { useSearchParams } from 'next/navigation';
 
 function HomePage() {
 
     const router = new Router()
-    
 
     const { user, trackers, courses } = useSelector((state: RootState) => ({
         user: state.userData.user,
@@ -31,12 +31,21 @@ function HomePage() {
     const [requestSended, setRequestSended] = useState(false)
     const [reasonShow, setReasonShow] = useState(false)
 
+
+    const startReason = () =>{
+        const reasonParams = useSearchParams().get('reason')
+        if(reasonParams){
+            return <ShowReason hideWindow={() => setReasonShow(false)} reason={reasonParams} />
+        }
+        else return <></>
+    }
+
     const diaryInputText = useInput('')
 
     const trackersRender = trackers.map(tracker => (
         <div className={style.tracker} key={tracker.trackerID} >
-            
-            <Lock onClick={() => setReasonShow(true)} lockWhere={user?.iswellcomebriefingcomplete===false}>
+
+            <Lock onClick={() => setReasonShow(true)} lockWhere={ user?.iswellcomebriefingcomplete === false}>
                 <div className={style.tracker_content} onClick={() => { setActiveModalWindow(tracker.windowType) }}>
                     <div className={style.tracker_icon}>
                         <p>{tracker.icon}</p>
@@ -48,8 +57,8 @@ function HomePage() {
         </div>
     ))
 
-    const coursesRender = courses.map(course => (
-        <div className={style.course} key={course.id} onClick={()=>router.sendUserTo(course.link)}>
+    const coursesRender = courses.available.map(course => (
+        <div className={style.course} key={course.id} onClick={() => router.sendUserTo(course.link)}>
             <h3>{course.name}</h3>
         </div>
     ))
@@ -84,6 +93,7 @@ function HomePage() {
         <>
             {activeModalWindow == ModalWidows.WaterWindow && <Water closeWindow={setActiveModalWindow} />}
             {reasonShow && <ShowReason hideWindow={() => setReasonShow(false)} reason='Пройдите ознакомительный курс' />}
+            {startReason()}
             <div className={op_san.className}>
                 <div className={style.wrapper}>
                     {/* <LogOut /> */}
@@ -131,5 +141,5 @@ function HomePage() {
     );
 }
 
-// export default HomePage
+
 export default withAuth(HomePage)

@@ -21,5 +21,5 @@ export async function GET(req: NextRequest) {
 
     const userData = await sql`select * from users_data where id = ${(DecodedUser as DecodedUserType).userID}`
 
-    return NextResponse.json(userData.rows[0])
+    return NextResponse.json({status: 200, data: userData.rows[0]})
 }

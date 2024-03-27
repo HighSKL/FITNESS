@@ -9,20 +9,31 @@ import { setBrief } from '@/app/Assets/api_services/home/service';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 
-function Wellcome() {
+import withNoBriefComplete from '@/app/Assets/Hocs/withNoBriefComplete';
+import UserWorker from '@/app/Assets/Hooks/UserWorker';
+
+
+
+function Wellcome(){
 
     const router = new Router()
     const weight = useInputLimit(30, 250)
     const height = useInputLimit(100, 250)
 
-
     const user_id = useSelector((state: RootState) => state.userData.user?.id)
 
+    const userWorkers = new UserWorker();
+
+
     const sendRequest = async () => {
+
         if (user_id) {
             await setBrief(true, user_id)
-            router.sendUserTo('/home')
         }
+
+        userWorkers.updateUser()
+        
+        router.sendUserTo('/home')
     }
 
     return (
@@ -94,5 +105,6 @@ function Wellcome() {
     );
 }
 
-export default compose(withAuth)(Wellcome)
+export default compose( withNoBriefComplete, withAuth )( Wellcome )
+
 // export default Wellcome

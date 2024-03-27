@@ -1,6 +1,5 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import { useRouter as useRouters } from 'next/router';
 
 export default class Router {
 

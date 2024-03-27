@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { BiLogOut } from "react-icons/bi";
-import { logOutUser } from '../api_services/api_service';
+import { logOutUser } from '../../Assets/api_services/api_service';
 import style from './style.module.scss'
-import Router from '../CustomRouter/router';
+import Router from '../../Assets/CustomRouter/router';
 
  function LogOut() {
 

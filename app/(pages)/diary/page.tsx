@@ -8,7 +8,6 @@ import Router from '@/app/Assets/CustomRouter/router';
 import DiaryDataWindow from '@/app/(components)/DiaryDataWindow/DiaryDataWindow'
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
-import { getNotes } from '@/app/Assets/api_services/diary/service';
 import { NoteType } from '@/app/types';
 import { diaryWorker } from './diaryWorker';
 
@@ -29,42 +28,33 @@ function Diary() {
             if (activeMonth == 11) {
                 setActiveYear(prev => prev + 1)
                 setActiveMonth(0)
-            } else {
+            } else 
                 setActiveMonth(prev => prev + 1)
-            }
             setDialogWindowOpen(null)
         }
-        static ChooseNextYear = () => {
-            setActiveYear(prev => prev + 1)
-        }
-        static ChoosePrevYear = () => {
-            setActiveYear(prev => prev - 1)
-        }
+        
+        static ChooseNextYear = () => setActiveYear(prev => prev + 1)
+        static ChoosePrevYear = () => setActiveYear(prev => prev - 1)
+        
         static ChoosePrevMonth = () => {
             if (activeMonth == 0) {
                 setActiveYear(prev => prev - 1)
                 setActiveMonth(11)
             }
-            else {
+            else 
                 setActiveMonth(prev => prev - 1)
-            }
             setDialogWindowOpen(null)
         }
     }
 
     const setDialogWindowOpenFunc = (day: number) => {
-        const dto = {
-            day: day
-        }
+        const dto = { day }
         setDialogWindowOpen(dto)
     }
 
     useEffect(()=>{
-        (async () => {
-            if(user)
-                setNotes(await diaryWorker.getNotes(user.id, activeMonth+1, activeYear))
-        })()
-    }, [activeMonth, activeYear, [] ])
+        (async () => user && setNotes(await diaryWorker.getNotes(user.id, activeMonth+1, activeYear)))()
+    }, [activeMonth, activeYear ])
 
     const renderCalendar = () => {
 

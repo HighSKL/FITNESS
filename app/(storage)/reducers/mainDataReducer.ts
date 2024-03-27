@@ -8,19 +8,27 @@ const initialState = {
         {trackerID: 3, trackerColor: "#EF3535", icon: "⚖️", trackerName: "Weight Tracker", windowType: ModalWidows.WeightWindow},
         {trackerID: 4, trackerColor: "#FA9D48", icon: "🥗", trackerName: "Food Tracker", windowType: ModalWidows.FoodWindow}
     ],
-    courses: [
-        {id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome'},
-    ]
+    courses: {
+        available: [
+            {id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome'},
+        ],
+        archived: [
+
+        ]
+    }
+    
+    
 }
 
 const reducer = createSlice({
     name: 'mainData',
     initialState,
     reducers: {
-        
+        archiveCourse: (state, action)=> {
+        }
     }
 })
 
-export const {} = reducer.actions
+export const { archiveCourse } = reducer.actions
 
 export const MainDataReducer = reducer.reducer
