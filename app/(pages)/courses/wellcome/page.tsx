@@ -8,11 +8,8 @@ import useInputLimit from '@/app/Assets/Hooks/useInputLimit';
 import { setBrief } from '@/app/Assets/api_services/home/service';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
-
 import withNoBriefComplete from '@/app/Assets/Hocs/withNoBriefComplete';
 import UserWorker from '@/app/Assets/Hooks/UserWorker';
-
-
 
 function Wellcome(){
 
@@ -105,6 +102,4 @@ function Wellcome(){
     );
 }
 
-export default compose( withNoBriefComplete, withAuth )( Wellcome )
-
-// export default Wellcome
+export default withAuth(withNoBriefComplete((Wellcome)))
