@@ -16,8 +16,6 @@ export async function GET(req: Request){
 
     const user_id = searchParams.get('id')
 
-    console.log(user_id)
-
     const briefResponse = await sql`SELECT iswellcomebriefingcomplete FROM users_data WHERE id = ${user_id}`
 
     return NextResponse.json({status: 200, data: briefResponse.rows[0]})

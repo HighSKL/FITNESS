@@ -2,12 +2,12 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Preloader from '../../(components)/Preloader/Preloader';
-import { getProfile } from '../api_services/api_service';
 import { ErrorResponesType, UserDataType } from '@/app/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import { setUserData } from '@/app/(storage)/reducers/userDataReducer';
 import { StatusesCodes } from '../enums';
+import { getProfile } from '../api_services/user/service';
 
 type injectedProps = {}
 

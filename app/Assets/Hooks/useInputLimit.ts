@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useInput from "./useInput";
 
 export default function useInputLimit(min: number = 0, max?: number) {
 

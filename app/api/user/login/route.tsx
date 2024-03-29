@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import bcrypt from 'bcryptjs';
 import { sql } from "@vercel/postgres"
-import apiErrors from "../errorsCode/apiErrors";
+import apiErrors from "../../errorsCode/apiErrors";
 import { cookies } from "next/headers";
 import { secretToken } from "@/config";
 import jwt from "jsonwebtoken"
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request, res: Response){
     
     const {email, password} = await req.json()
 
@@ -26,5 +26,5 @@ export async function POST(req: NextRequest) {
 
     cookies().set("refreshToken", refreshToken, {maxAge: 30*24*60*60*1000, httpOnly:false})
 
-    return NextResponse.json({ status: 200 });
+    return NextResponse.json({ status: 200,  });
 }

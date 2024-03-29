@@ -4,10 +4,10 @@ import style from './sign.module.scss'
 import { Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import { validator } from '../../functions';
-import { authUser } from '../../Assets/api_services/api_service';
 import { useRouter } from 'next/navigation';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
 import { StatusesCodes } from '@/app/Assets/enums';
+import { authUser } from '@/app/Assets/api_services/user/service';
 
 function SignInPage() {
 

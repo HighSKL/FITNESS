@@ -1,24 +1,31 @@
-import { ErrorResponesType } from "@/app/types"
+export default class ApiError extends Error {
 
-class ApiError {
-    UserNotAuthorized(){
-        return {status: 401, message: "User not authorized"}
+    status: number = 0
+    message: string = ''
+
+    constructor(status: number, message: string){
+        super()
+        this.status = status
+        this.message = message
     }
-    EmailAlreadyExists(){
-        return {status: 409, message: "This email already exists"}
+
+    static UserNotAuthorized(){
+        return new ApiError(401, "Пользователь не авторизован")
     }
-    UnexpectedError(){
-        return {status: 500, message:"Unexpected error"}
+    static EmailAlreadyExists(){
+        return new ApiError(409, "Пользователь с заданным email уже существует")
     }
-    UserNotFound(){
-        return {status: 401, message: "User not found"}
+    static UnexpectedError(){
+        return new ApiError(500, "Непредвиденная ошибка")
     }
-    InvalidPassword(){
-        return {status: 403, message: "Invalid password"}
+    static UserNotFound(){
+        return new ApiError(401, "Пользователь не найден")
     }
-    ExternalError(errorMessage: string){
-        return {status: 500, message: errorMessage}
+    static InvalidPassword(){
+        return new ApiError(403, "Неправильный пароль")
+    }
+    static ExternalError(errorMessage: string){
+        return new ApiError(500, errorMessage)
     }
 }
 
-export default new ApiError();

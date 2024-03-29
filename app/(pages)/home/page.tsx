@@ -31,6 +31,8 @@ function HomePage() {
     const [requestSended, setRequestSended] = useState(false)
     const [reasonShow, setReasonShow] = useState(false)
 
+    const diaryInputText = useInput('')
+
 
     const startReason = () =>{
         const reasonParams = useSearchParams().get('reason')
@@ -40,7 +42,6 @@ function HomePage() {
         else return <></>
     }
 
-    const diaryInputText = useInput('')
 
     const trackersRender = trackers.map(tracker => (
         <div className={style.tracker} key={tracker.trackerID} >
@@ -69,6 +70,7 @@ function HomePage() {
             if (user) {
                 const note = await getCurrentNote(user.id, day, month, year).then(res => res.data)
                 if (note.length != 0) {
+                    console.log(note[0])
                     setChosenNote(note[0])
                     diaryInputText.setValue(note[0].description)
                 }
@@ -79,8 +81,13 @@ function HomePage() {
     const addDiary = async () => {
         const { day, month, year } = diaryWorker.getTodayDate()
         setRequestSended(true)
-        if (user)
+        if (user){
             diaryWorker.addNewNote(user.id, day, month, year, diaryInputText.value).then(() => setRequestSended(false))
+            
+            const note = await getCurrentNote(user.id, day, month, year).then(res => res.data)
+            setChosenNote(note[0])
+        }
+        
     }
 
     const changeNoteDescription = async () => {

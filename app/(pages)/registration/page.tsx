@@ -5,8 +5,8 @@ import { Field, Form, Formik } from 'formik';
 import { validator } from '../../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
-import { createUser } from '../../Assets/api_services/api_service';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
+import { createUser } from '@/app/Assets/api_services/user/service';
 
 function RegistrationPage() {
 
@@ -77,4 +77,3 @@ function RegistrationPage() {
 }
 
 export default withOutOfAuth(RegistrationPage)
-// export default RegistrationPage
