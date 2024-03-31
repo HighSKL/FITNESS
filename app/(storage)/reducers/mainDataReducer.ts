@@ -10,7 +10,7 @@ const initialState = {
     ],
     courses: {
         available: [
-            {id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome'},
+            { id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome' }
         ],
         archived: [
 

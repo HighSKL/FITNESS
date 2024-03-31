@@ -1,8 +1,8 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
-import authMiddleware from "../../middlewares/authMiddleware";
+import authMiddleware from "../../../middlewares/authMiddleware";
 
-export async function PUT(req: Request) {
+export async function PATCH(req: Request) {
 
     const decodedUser = await authMiddleware()
     if (decodedUser instanceof Error) {

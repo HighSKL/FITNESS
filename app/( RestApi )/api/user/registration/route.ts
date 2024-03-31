@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import { cookies } from 'next/headers'
 import jwt from "jsonwebtoken"
 import { secretToken } from "@/config";
-import apiErrors from "../../errorsCode/apiErrors";
+import apiErrors from "../../../errorsCode/apiErrors";
 
 export async function POST(req:Request){
     const body = await req.json();

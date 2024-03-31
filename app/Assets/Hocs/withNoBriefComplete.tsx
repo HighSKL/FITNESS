@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Router from '../CustomRouter/router';
-import { getBrief } from '../api_services/home/service';
+import { getBrief } from '../../( RestApi )/api_services/home/service';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import Preloader from '../../(components)/Preloader/Preloader';

@@ -1,4 +1,4 @@
-import { addNote, getNotes } from '@/app/Assets/api_services/diary/service';
+import { addNote, getNotes } from '@/app/( RestApi )/api_services/diary/service';
 
 export class diaryWorker {
     static addNewNote = async (id: number, day: number, month: number, year: number, value: string) => {

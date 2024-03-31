@@ -6,7 +6,7 @@ import { validator } from '../../functions';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
-import { createUser } from '@/app/Assets/api_services/user/service';
+import { createUser } from '@/app/( RestApi )/api_services/user/service';
 
 function RegistrationPage() {
 

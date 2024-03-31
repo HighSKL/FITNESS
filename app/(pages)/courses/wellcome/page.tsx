@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import withAuth from '@/app/Assets/Hocs/withAuth';
 import Router from '@/app/Assets/CustomRouter/router';
 import useInputLimit from '@/app/Assets/Hooks/useInputLimit';
-import { setBrief } from '@/app/Assets/api_services/home/service';
+import { setBrief } from '@/app/( RestApi )/api_services/home/service';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import withNoBriefComplete from '@/app/Assets/Hocs/withNoBriefComplete';
@@ -21,7 +21,6 @@ function Wellcome(){
 
     const userWorkers = new UserWorker();
 
-
     const sendRequest = async () => {
 
         if (user_id) {
@@ -29,6 +28,8 @@ function Wellcome(){
         }
 
         userWorkers.updateUser()
+
+
         
         router.sendUserTo('/home')
     }

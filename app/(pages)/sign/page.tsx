@@ -7,7 +7,7 @@ import { validator } from '../../functions';
 import { useRouter } from 'next/navigation';
 import withOutOfAuth from '@/app/Assets/Hocs/withOutOfAuth';
 import { StatusesCodes } from '@/app/Assets/enums';
-import { authUser } from '@/app/Assets/api_services/user/service';
+import { authUser } from '@/app/( RestApi )/api_services/user/service';
 
 function SignInPage() {
 

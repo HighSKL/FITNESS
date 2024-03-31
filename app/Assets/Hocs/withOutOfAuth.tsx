@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import { setUserData } from '@/app/(storage)/reducers/userDataReducer';
 import { StatusesCodes } from '../enums';
-import { getProfile } from '../api_services/user/service';
+import { getProfile } from '../../( RestApi )/api_services/user/service';
 
 type injectedProps = {}
 

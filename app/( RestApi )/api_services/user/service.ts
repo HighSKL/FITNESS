@@ -1,4 +1,4 @@
-import { post, get, patch } from "@/app/( RestApi )/api_services/requests"
+import { post, get, patch } from "../requests"
 
 // get
 export const getProfile = () => get("user/profile")

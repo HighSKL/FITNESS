@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { sql } from "@vercel/postgres";
 import { DecodedUserType } from "@/app/types";
-import authMiddleware from "../../middlewares/authMiddleware";
+import authMiddleware from "../../../middlewares/authMiddleware";
 
 export async function GET(req: Request, res: Response) {
 

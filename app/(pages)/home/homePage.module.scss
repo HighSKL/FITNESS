@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 .wrapper {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     float: left;
-    // overflow-y: scroll;
     padding-bottom: 40px;
 }
 
@@ -50,7 +51,7 @@
         outline: none;
         color: white;
         transition: .5s ease;
-        font-size: 15px;
+        font-size: 15px !important;
         margin-top: 3px;
 
         &::placeholder {
@@ -79,6 +80,11 @@
     align-items: flex-start;
     margin: 0 auto;
     margin-top: 5px;
+    textarea {
+        font-size: 17px;
+        font-family: Open Sans;
+
+    }
     .diary_button{
         width: 100px;
         height: 48px;
@@ -87,7 +93,7 @@
         box-shadow: 0px 0px 5px rgba(92, 199, 245, 0.50);
         border: none;
         color: white;
-        font-size: 10px;
+        font-size: 12px;
         transition: .3s ease;
         cursor: pointer;
         &:hover{
@@ -103,21 +109,50 @@
     gap: 10px;
 }
 
-.buttons-menu__add-note{
+.buttons-menu__btn{
     width: 100px;
     cursor: pointer;
     border: none;
     height: 48px;
     border-radius: 16px;
     padding: 12px;
-    transition: .3s ease;
     background-color: #fff;
+    animation: showBtn .3s ease forwards;
+    transition: .3s ease;
     &:disabled{
+        animation: hideBtn .3s ease forwards;
+    }
+}
+
+@keyframes hideBtn {
+    0%{
+        opacity: 100%;
+    }
+    80%{
+        height: 48px;
+        opacity: 0%;
+
+    }
+    100%{
         height: 0;
         opacity: 0%;
     }
 }
-
+@keyframes showBtn {
+    0%{
+        height: 0;
+        opacity: 0%;
+    }
+    50%{
+        height: 48px;
+        opacity: 0%;
+    }
+    100%{
+        height: 48px;
+        opacity: 100%;
+        
+    }
+}
 
 
 .trackers_block {
@@ -193,6 +228,9 @@
 
 .courses-container{
     margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
 }
 
 .course{
@@ -206,21 +244,48 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
+.show-more-btn{
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px 0;
+    border-radius: 40px;
+    border: 0;
+    background-color: rgb(63, 63, 63);
+    color: #FFF;
+    font-size: 17px;
+    font-weight: 500;
+    transition: .3s ease;
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(77, 77, 77);
+    }
+}
 
 @media (max-width: 767px) {
 
+
+    .diary_container{
+        flex-flow: column;
+        align-items: center;
+        textarea {
+            width: calc( 100% - 30px );
+        }
+    }
+    
     .buttons-menu{
         flex-flow: row-reverse;
+        margin-top: 20px;
         margin-left: 0;
-        .buttons-menu__add-note{
+        .buttons-menu__btn{
             width: auto;
+            font-size: 15px !important;
         }
+    }
+
+    .diary_button{
+        font-size: 15px !important; 
+        width: auto !important;
+        padding: 10px 20px;
     }
 
     .wrapper {
@@ -234,13 +299,25 @@
     }
     .trackers_block{
         width: auto;
-        margin: 0 auto;
+        margin: auto;
         max-width: 560px;
         margin-top: 50px;
     }
     .trackers_container{
         width: auto;
-        margin: 0 auto;
+        margin: auto;
+    }
+    .courses{
+        width: calc( 100% - 20px );
+        margin: auto;
+        .course{
+            width: calc( 100% - 20px );
+            margin: auto;
+        }
+        .show-more-btn{
+            width: calc( 100% - 20px );
+            margin-left: 10px;
+        }
     }
 }
 
@@ -256,15 +333,12 @@
         grid-template-columns: 1fr 1fr;
         height: auto;
         justify-content: center;
-        // flex-flow: column;
         overflow: visible !important;
-        // align-items: center;
         .tracker{
             justify-self: center;
             align-self: center;
         }
     }
-
 
     .diary_container{
         flex-flow: column;

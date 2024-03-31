@@ -1,6 +1,6 @@
 'use client'
 import withModalWindow from '@/app/Assets/Hocs/ModalWindow/withModalWindow';
-import { changeActiveNoteDescription, deleteNoteDescription, getCurrentNote } from '@/app/Assets/api_services/diary/service';
+import { changeActiveNoteDescription, deleteNoteDescription, getCurrentNote } from '@/app/( RestApi )/api_services/diary/service';
 import { MonthsRusLang } from '@/app/Assets/enums';
 import { useEffect, useState } from 'react';
 import style from './style.module.scss'
