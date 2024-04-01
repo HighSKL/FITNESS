@@ -1,6 +1,8 @@
 import { ModalWidows } from "@/app/Assets/enums";
 import { createSlice } from "@reduxjs/toolkit";
 
+import wellcomeImg from '@/imgs/courses_bg/bg_wellcome.png'
+
 const initialState = {
     trackers: [
         {trackerID: 1, trackerColor: "#82DB86", icon: "🏃‍♀️", trackerName: "Training Tracker", windowType: ModalWidows.TrainingWindow},
@@ -10,7 +12,7 @@ const initialState = {
     ],
     courses: {
         available: [
-            { id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome' }
+            { id: 1, name: "Давайте знакомиться!)", link:'/courses/wellcome', bgColor: "#B8B8B8", bgImg: wellcomeImg.src}
         ],
         archived: [
 

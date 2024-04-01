@@ -63,8 +63,8 @@ function HomePage() {
     ))
 
     const coursesRender = courses.available.map(course => (
-        <div className={style.course} key={course.id} onClick={() => router.sendUserTo(course.link)}>
-            <h3>{course.name}</h3>
+        <div className={style.course} key={course.id} onClick={() => router.sendUserTo(course.link)} style={{backgroundImage: "url("+course.bgImg+")"}}>
+            <h3 className={style['course-title']} style={{background: course.bgColor}}>{course.name}</h3>
         </div>
     ))
 
@@ -152,7 +152,7 @@ function HomePage() {
                             </div>
 
                             <div className={style['courses']}>
-                                <h1 className={style.block_title}>Курсы</h1>
+                                <h1 className={style.block_title}>Важное и интересное</h1>
                                 <div className={style['courses-container']}>
                                     {coursesRender}
                                 </div>
