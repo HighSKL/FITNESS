@@ -119,6 +119,7 @@
     background-color: #fff;
     animation: showBtn .3s ease forwards;
     transition: .3s ease;
+    color: black;
     &:disabled{
         animation: hideBtn .3s ease forwards;
     }
@@ -245,12 +246,9 @@
 }
 
 .show-more-btn{
-    width: 100%;
     margin-top: 15px;
-    padding: 20px 0;
     border-radius: 40px;
     border: 0;
-    background-color: rgb(63, 63, 63);
     color: #FFF;
     font-size: 17px;
     font-weight: 500;

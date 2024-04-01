@@ -9,13 +9,13 @@ import { RootState } from '../../(storage)/store';
 import withAuth from '../../Assets/Hocs/withAuth';
 import { Lock, ShowReason } from '../../(components)/Lock/Lock';
 import { ModalWidows } from '../../Assets/enums';
-import LogOut from '@/app/(components)/LogOut/LogOut';
 import { useEffect, useState } from 'react';
 import style from './homePage.module.scss';
 import { useSelector } from 'react-redux';
 import { NoteType } from '@/app/types';
 import { useSearchParams } from 'next/navigation';
 import Preloader from '@/app/(components)/Preloader/Preloader';
+import BurgerMenu from './(nestedComponents)/burgerMenu/burgerMenu';
 
 function HomePage() {
 
@@ -33,7 +33,6 @@ function HomePage() {
     const [reasonShow, setReasonShow] = useState(false)
 
     const diaryInputText = useInput('')
-
 
     const [preloaderActive, setPreloaderActive] = useState(true)
 
@@ -118,6 +117,7 @@ function HomePage() {
                 {activeModalWindow == ModalWidows.WaterWindow && <Water closeWindow={setActiveModalWindow} />}
                 {reasonShow && <ShowReason hideWindow={() => setReasonShow(false)} reason='Пройдите ознакомительный курс' />}
                 {startReason()}
+                <BurgerMenu />
                 <div className={op_san.className}>
                     <div className={style.wrapper}>
                         {/* <LogOut /> */}
@@ -169,3 +169,4 @@ function HomePage() {
 
 
 export default withAuth(HomePage)
+// export default HomePage

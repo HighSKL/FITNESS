@@ -10,8 +10,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/app/(storage)/store';
 import withNoBriefComplete from '@/app/Assets/Hocs/withNoBriefComplete';
 import UserWorker from '@/app/Assets/Hooks/UserWorker';
+import { updateParameters } from '@/app/( RestApi )/api_services/user/service';
 
-function Wellcome(){
+function Wellcome() {
 
     const router = new Router()
     const weight = useInputLimit(30, 250)
@@ -23,15 +24,17 @@ function Wellcome(){
 
     const sendRequest = async () => {
 
-        if (user_id) {
-            await setBrief(true, user_id)
-        }
-
-        userWorkers.updateUser()
-
-
+        await updateParameters(weight.value, height.value).then(async () =>{
+            if (user_id)
+                await setBrief(true, user_id)
+    
+            userWorkers.updateUser()
+    
+            router.sendUserTo('/home')
+    
+        })
         
-        router.sendUserTo('/home')
+
     }
 
     return (
