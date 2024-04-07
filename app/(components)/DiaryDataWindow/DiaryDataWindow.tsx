@@ -11,7 +11,6 @@ import { diaryWorker } from '@/app/(pages)/diary/diaryWorker';
 import { FaRegTrashCan } from "react-icons/fa6";
 
 type PropsType = {
-    id: number
     date: {
         year: number, month: number, day: number
     }
@@ -29,7 +28,7 @@ function DiaryDataWindow(props: PropsType) {
 
     const addNewNote = async () => {
         setRequestSended(true)
-        diaryWorker.addNewNote(props.id, props.date.day, props.date.month, props.date.year, descTextarea.value).then(() => {
+        diaryWorker.addNewNote( props.date.day, props.date.month, props.date.year, descTextarea.value).then(() => {
             setRequestSended(false)
         })
     }
@@ -49,7 +48,7 @@ function DiaryDataWindow(props: PropsType) {
 
     useEffect(() => {
         (async () => {
-            const note = await getCurrentNote(props.id, props.date.day, props.date.month, props.date.year).then(res => res.data)
+            const note = await getCurrentNote(props.date.day, props.date.month, props.date.year).then(res => res.data)
             if (note.length != 0){
                 setChosenNote(note[0])
                 descTextarea.setValue(note[0].description)

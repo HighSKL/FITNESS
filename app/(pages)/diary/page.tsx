@@ -90,7 +90,7 @@ function Diary() {
                 <div className={style['days']}>
                     {daysArr.map(day => (
                         <>
-                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow {...{id: user?.id, date: {year: activeYear, month: activeMonth+1, day: day} }} closeWindow={setDialogWindowOpen} />}
+                            {day != 0 && dialogWindowOpen?.day == day && <DiaryDataWindow {...{date: {year: activeYear, month: activeMonth+1, day: day} }} closeWindow={setDialogWindowOpen} />}
                             <div className={style.cell} onClick={() => setDialogWindowOpenFunc(day)}>
                                 {day != 0 && <p className={style['cell__day-text']}>{day}</p>}
                                 {notes.length > 0&&notes.map((note) =>{

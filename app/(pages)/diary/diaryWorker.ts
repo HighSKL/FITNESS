@@ -1,8 +1,8 @@
 import { addNote, getNotes } from '@/app/( RestApi )/api_services/diary/service';
 
 export class diaryWorker {
-    static addNewNote = async (id: number, day: number, month: number, year: number, value: string) => {
-        await addNote(id, day, month, year, value)
+    static addNewNote = async (day: number, month: number, year: number, value: string) => {
+        await addNote( day, month, year, value)
     }
     static getTodayDate = () => {
         const today = new Date();

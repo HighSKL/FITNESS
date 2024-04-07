@@ -2,14 +2,16 @@ import { UserDataType } from "@/app/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    user: null as UserDataType|null, 
+    user: null as UserDataType | null,
 }
 
 const reducer = createSlice({
     name: 'userData',
     initialState,
-    reducers:{
-        setUserData: (state, action) => { state.user = action.payload}
+    reducers: {
+        setUserData: (state, action) => {
+            state.user = action.payload
+        }
     }
 })
 

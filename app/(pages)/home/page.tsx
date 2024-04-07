@@ -70,10 +70,9 @@ function HomePage() {
 
     useEffect(() => {
         (async () => {
-            
             const { day, month, year } = diaryWorker.getTodayDate()
             if (user) {
-                const note = await getCurrentNote(user.id, day, month, year).then(res => res.data)
+                const note = await getCurrentNote( day, month, year).then(res => res.data)
                 if (note.length != 0) {
                     setChosenNote(note[0])
                     diaryInputText.setValue(note[0].description)
@@ -87,9 +86,9 @@ function HomePage() {
         const { day, month, year } = diaryWorker.getTodayDate()
         setRequestSended(true)
         if (user) {
-            diaryWorker.addNewNote(user.id, day, month, year, diaryInputText.value).then(() => setRequestSended(false))
+            diaryWorker.addNewNote(day, month, year, diaryInputText.value).then(() => setRequestSended(false))
 
-            const note = await getCurrentNote(user.id, day, month, year).then(res => res.data)
+            const note = await getCurrentNote(day, month, year).then(res => res.data)
             setChosenNote(note[0])
         }
 
@@ -120,7 +119,6 @@ function HomePage() {
                 <BurgerMenu />
                 <div className={op_san.className}>
                     <div className={style.wrapper}>
-                        {/* <LogOut /> */}
                         <div className={style.content_block}>
 
                             <h1 className={style.header_text}>Главная</h1>
