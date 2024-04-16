@@ -1,46 +1,26 @@
 "use client"
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
 import Preloader from '../../(components)/Preloader/Preloader';
-import { ErrorResponesType, UserDataType } from '@/app/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/app/(storage)/store';
-import { setUserData } from '@/app/(storage)/reducers/userDataReducer';
-import { StatusesCodes } from '../enums';
-import { getProfile } from '../../( RestApi )/api_services/user/service';
+import useUserUpdate from '../Hooks/useUserUpdate';
+import { useEffect } from 'react';
+import Router from '../CustomRouter/router';
 
 type injectedProps = {}
 
 export default function withOutOfAuth<T extends injectedProps>(WrappedComponent: React.ComponentType<T>) {
     return (props: T) => {
 
-        const dispatch = useDispatch()
+        const { isLoading, data: userData } = useUserUpdate()
 
-        const user = useSelector((state: RootState) => (state.userData.user))
-        const router = useRouter()
+        const router = new Router()
 
-        const [isUser, setUser] = useState(true)
-
-        useEffect(() => {
-            (async () => {
-                if (!user) {
-                    const data: UserDataType | ErrorResponesType = await getProfile().then(res => res)
-                    if (data?.status === StatusesCodes.UserNotAuthorized)
-                        setUser(false)
-                    else {
-                        dispatch(setUserData(data as UserDataType))
-                        setUser(true)
-                        router.push('/home')
-                    }
-                } else {
-                    setUser(true)
-                    router.push('/home')
-                }
-            })()
-        }, [])
+        useEffect(()=>{
+            if(userData){
+                router.sendUserTo('/home')
+            }
+        }, [userData])
 
         return (<>
-            {isUser ? <Preloader /> : <WrappedComponent {...props} />}
+            { isLoading ? <Preloader /> : <WrappedComponent {...props} /> }
         </>)
     }
 }

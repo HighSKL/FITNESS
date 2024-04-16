@@ -16,10 +16,12 @@ export default function useUserUpdate(){
     }, [data])
     
     const updateUser = () => {
-        if( data )
-            dispatch(setUserData(data.data as UserDataType))
-        else 
-            router.sendUserTo('/sign')
+        if(isLoading == false){
+            if( data )
+                dispatch(setUserData(data.data as UserDataType))
+            else 
+                router.sendUserTo('/sign')
+        }
     }
 
     return {
