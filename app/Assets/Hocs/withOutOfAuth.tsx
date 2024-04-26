@@ -9,18 +9,17 @@ type injectedProps = {}
 export default function withOutOfAuth<T extends injectedProps>(WrappedComponent: React.ComponentType<T>) {
     return (props: T) => {
 
-        const { isLoading, data: userData } = useUserUpdate()
+        const { isLoading, isError: userNotAuth } = useUserUpdate()
 
         const router = new Router()
 
         useEffect(()=>{
-            if(userData){
+            if(!userNotAuth && !isLoading)
                 router.sendUserTo('/home')
-            }
-        }, [userData])
+        }, [ userNotAuth, isLoading ])
 
         return (<>
-            { isLoading ? <Preloader /> : <WrappedComponent {...props} /> }
+            { userNotAuth && !isLoading ? <WrappedComponent {...props} /> : <Preloader /> }
         </>)
     }
 }

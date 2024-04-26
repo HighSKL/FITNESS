@@ -19,7 +19,7 @@ export const userAPI = createApi({
 })
 
 // get
-export const getProfile = () => get("user/profile")
+// export const getProfile = () => get("user/profile")
 
 // post
 export const createUser =  (username: string, email: string, password: string) => 

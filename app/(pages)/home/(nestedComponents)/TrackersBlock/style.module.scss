@@ -65,18 +65,41 @@
         overflow-y: hidden;
         white-space: nowrap;
         margin-top: 25px;
-    }    
+    }
 }
 
 
+
+.progress-ring__circle {
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: .5s ease;
+}
+
+
+
+
+
+// html, body {
+//     background-color: #64B5F6;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+//     height: 100%;
+// }
+
+
+
 @media (max-width: 767px) {
-    .trackers_block{
+    .trackers_block {
         width: auto;
         margin: auto;
         max-width: 560px;
         margin-top: 50px;
     }
-    .trackers_container{
+
+    .trackers_container {
         width: auto;
         margin: auto;
     }
@@ -95,7 +118,8 @@
         justify-self: center;
         align-self: center;
     }
-    .trackers_container{
+
+    .trackers_container {
         width: 380px !important;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -103,7 +127,8 @@
         justify-content: center;
         overflow: visible !important;
     }
-    .block_title{
+
+    .block_title {
         margin-left: 20px;
     }
 }
@@ -113,7 +138,8 @@
         width: 60% !important;
         height: auto;
     }
-    .trackers_container{
+
+    .trackers_container {
         width: 100% !important;
         display: flex;
         height: auto !important;

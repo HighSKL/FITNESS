@@ -1,21 +1,26 @@
 'use client'
-import { RootState } from '@/app/(storage)/store';
-import { useSelector } from 'react-redux';
 import Preloader from '@/app/(components)/Preloader/Preloader';
 import useUserUpdate from '../Hooks/useUserUpdate';
+import { useEffect } from 'react';
+import Router from '../CustomRouter/router';
 
 type injectedProps = {}
 
 export default function withAuth<T extends injectedProps>(WrappedComponent: React.ComponentType<T>) {
     return (props: T) => {
 
-        const userData = useSelector((state: RootState) => (state.userData.user))
+        const router = new Router();
 
-        const { isLoading } = useUserUpdate()
+        const { isLoading, isError } = useUserUpdate()
+
+        useEffect(()=>{
+            if(isError && !isLoading)
+                router.sendUserTo('/sign')
+        },[isError, isLoading])
 
         return (
             <>
-                { !userData || isLoading ? <Preloader /> : <WrappedComponent {...props} /> }
+                { !isError && !isLoading ? <WrappedComponent {...props} /> : <Preloader />  }
             </>
         )
     }

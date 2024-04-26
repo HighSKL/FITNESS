@@ -14,6 +14,9 @@ import BurgerMenu from './(nestedComponents)/burgerMenu/burgerMenu';
 import TrackersBlock from './(nestedComponents)/TrackersBlock/TrackersBlock';
 import CoursesBlock from './(nestedComponents)/CoursesBlock/CoursesBlock';
 import DiaryBlock from './(nestedComponents)/DiaryBlock/DiaryBlock';
+import Training from '@/app/(components)/(trackers)/Training/Training';
+import Weight from '@/app/(components)/(trackers)/Weight/Weight';
+import Food from '@/app/(components)/(trackers)/Food/Food';
 
 function HomePage() {
 
@@ -35,13 +38,20 @@ function HomePage() {
         else return <></>
     }
 
+    const modalWindows = {
+        'null': <></>,
+        'water-window': <Water closeWindow={setActiveModalWindow}/>,
+        'training-window': <Training closeWindow={setActiveModalWindow}/>,
+        'weight-window': <Weight closeWindow={setActiveModalWindow}/>,
+        'food-window': <Food closeWindow={setActiveModalWindow}/>
+    }
+
     useEffect(() => { preloaderDelay() }, [])
 
     return (
         <>
             {preloaderActive && <Preloader />}
-
-            {activeModalWindow == ModalWidows.WaterWindow && <Water closeWindow={setActiveModalWindow} />}
+            {modalWindows[`${activeModalWindow}`]}
             {reasonShow && <ShowReason hideWindow={() => setReasonShow(false)} reason='Пройдите ознакомительный курс' />}
             {startReason()}
             <BurgerMenu />
@@ -54,11 +64,11 @@ function HomePage() {
 
                         <DiaryBlock />
 
-                        <TrackersBlock
+                        {!preloaderActive && <TrackersBlock
                             briefCompleted={user?.iswellcomebriefingcomplete}
                             setActiveModalWindow={setActiveModalWindow}
                             setReasonShow={setReasonShow}
-                        />
+                        />}
 
                         <CoursesBlock />
 
@@ -70,3 +80,4 @@ function HomePage() {
 }
 
 export default withAuth(HomePage)
+// export default HomePage

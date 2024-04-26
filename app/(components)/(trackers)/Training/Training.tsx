@@ -2,7 +2,7 @@ import withModalWindow from '@/app/Assets/Hocs/ModalWindow/withModalWindow';
 import style from './style.module.scss';
 import React from 'react';
 
-function Water() {
+function Training() {
     return (
         <div>
             
@@ -10,4 +10,4 @@ function Water() {
     );
 }
 
-export default withModalWindow(Water);
+export default withModalWindow(Training);

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style.module.scss'
 import { FaPersonRunning } from "react-icons/fa6";
 import { IoWater } from "react-icons/io5";
@@ -28,9 +28,10 @@ export default function BurgerMenu() {
 
     const logOut = async () => {
         const logout = await logOutUser().then(res => res);
+        router.sendUserTo('/sign')
         if (logout.status == 200) {
             dispatch(setUserData(null))
-            router.sendUserTo('/sign')
+            // router.sendUserTo('/sign')
         }
     }
 

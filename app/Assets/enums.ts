@@ -6,10 +6,10 @@ export enum StatusesCodes {
 }
 
 export enum ModalWidows {
-    WaterWindow,
-    TrainingWindow,
-    WeightWindow,
-    FoodWindow
+    WaterWindow = 'water-window',
+    TrainingWindow = 'training-window',
+    WeightWindow = 'weight-window',
+    FoodWindow = 'food-window'
 }
 
 export enum Months {

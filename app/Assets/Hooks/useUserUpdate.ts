@@ -20,7 +20,7 @@ export default function useUserUpdate(){
             if( data )
                 dispatch(setUserData(data.data as UserDataType))
             else 
-                router.sendUserTo('/sign')
+                return("User not authorized")
         }
     }
 
