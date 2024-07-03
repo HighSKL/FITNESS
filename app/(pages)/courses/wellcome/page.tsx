@@ -11,6 +11,7 @@ import { RootState } from '@/app/(storage)/store';
 import withNoBriefComplete from '@/app/Assets/Hocs/withNoBriefComplete';
 import UserWorker from '@/app/Assets/Hooks/UserWorker';
 import { updateParameters } from '@/app/( RestApi )/api_services/user/service';
+import useUserUpdate from '@/app/Assets/Hooks/useUserUpdate';
 
 function Wellcome() {
 
@@ -24,17 +25,15 @@ function Wellcome() {
 
     const sendRequest = async () => {
 
-        await updateParameters(weight.value, height.value).then(async () =>{
+        await updateParameters(weight.value, height.value).then(async () => {
             if (user_id)
                 await setBrief(true, user_id)
-    
-            userWorkers.updateUser()
-    
-            router.sendUserTo('/home')
-    
         })
-        
+        const user = userWorkers.updateUser()
 
+        // const {isLoading} = await useUserUpdate()
+
+        router.sendUserTo('/sign')
     }
 
     return (
@@ -106,4 +105,4 @@ function Wellcome() {
     );
 }
 
-export default withAuth(withNoBriefComplete((Wellcome)))
+export default withAuth(withNoBriefComplete(Wellcome))
