@@ -29,7 +29,7 @@ function DiaryBlock() {
                 }
             }
         })()
-    }, [])
+    }, [user])
 
 
     const addDiary = async () => {
