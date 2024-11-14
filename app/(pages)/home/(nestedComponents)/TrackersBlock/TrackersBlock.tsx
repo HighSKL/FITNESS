@@ -38,10 +38,10 @@ export default function TrackersBlock(props: PropsType) {
                             <p>{tracker.icon}</p>
                         </div>
                         <svg className={style["progress-ring"]} width="120" height="120">
-                            <circle className={style["progress-ring__circle"]} stroke={"white"} stroke-width="10" cx="60" cy="60" r={radius} fill="transparent"
-                                style={{ strokeDasharray: `${circumference} ${circumference}` }}/>
-                            <circle className={style["progress-ring__circle"]} stroke={tracker.trackerColor} stroke-width="10" cx="60" cy="60" r={radius} fill="transparent"
-                                style={{ strokeDasharray: `${circumference} ${circumference}`, strokeDashoffset: progress }} />
+                            <circle className={style["progress-ring__circle"]} stroke={"white"} strokeWidth="10" cx="60" cy="60" r={radius} fill="transparent"
+                                    style={{ strokeDasharray: `${circumference} ${circumference}` }}/>
+                            <circle className={style["progress-ring__circle"]} stroke={tracker.trackerColor} strokeWidth="10" cx="60" cy="60" r={radius} fill="transparent"
+                                    style={{ strokeDasharray: `${circumference} ${circumference}`, strokeDashoffset: progress }} />
                         </svg>
 
 

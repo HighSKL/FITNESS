@@ -28,6 +28,6 @@ export const authUser = (email:string, password:string) => post("user/login", {e
 export const logOutUser = () => post("user/logout", {})
 
 // patch
-export const updateParameters = ( weight: number, height: number ) => patch("user/parameters", { weight, height })
+export const updateParameters = ( weight: number, height: number, isMale:boolean, massUp: boolean ) => patch("user/parameters", { weight, height, isMale, massUp })
 export const updateWeight = ( weight: number ) => patch("user/parameters", { weight })
 export const updateHeight = ( height: number ) => patch("user/parameters", { height })

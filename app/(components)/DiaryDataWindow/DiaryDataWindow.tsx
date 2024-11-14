@@ -24,6 +24,8 @@ function DiaryDataWindow(props: PropsType) {
     const [preloaderActive, setPreloaderActive] = useState(true)
     const [requestSended, setRequestSended] = useState(false)
 
+    const [workouts, setWorkouts] = useState<Object[]>([])
+
     const descTextarea = useInput('')
 
     const addNewNote = async () => {
@@ -57,10 +59,22 @@ function DiaryDataWindow(props: PropsType) {
         })()
     }, [])
 
+    const renderWorkout = workouts.map((workout)=> (
+        <div>
+
+        </div>
+    ))
+
     return (
         <div className={style.wrapper}>
             {chosenNote&&<div className={style['delete-note']} onClick={deleteNote}><FaRegTrashCan /><p>Удалить</p></div>}
             <h1 className={style['date-title']}>{props.date.day} {MonthsRusLang[props.date.month]}</h1>
+
+            <div className={style['workout-container']}>
+                {renderWorkout}
+            </div>
+
+            <button className={style['add-work']} onClick={()=>setWorkouts((prev)=> [...prev, {}])}>Добавить упражнение +</button>
             {!preloaderActive && <textarea name="" {...descTextarea} className={style['diary-note__textarea']} placeholder='Начните вводить новую заметку' />}
             {preloaderActive && <ComponentPreloader width='100%' height='5vh' style={{ marginTop: '50px' }} />}
             <div className={style.button__container}>

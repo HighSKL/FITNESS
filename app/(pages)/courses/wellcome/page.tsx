@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, {useState} from 'react';
 import style from '../style.module.scss'
 import { compose } from 'redux';
 import withAuth from '@/app/Assets/Hocs/withAuth';
@@ -19,13 +19,19 @@ function Wellcome() {
     const weight = useInputLimit(30, 250)
     const height = useInputLimit(100, 250)
 
+    const [upMass, setUpMass] = useState<boolean>(true)
+    const [downMass, setDownMass] = useState<boolean>(false)
+
+    const [male, setMale] = useState<boolean>(true)
+    const [female, setFemale] = useState<boolean>(false)
+
     const user_id = useSelector((state: RootState) => state.userData.user?.id)
 
     const userWorkers = new UserWorker();
 
     const sendRequest = async () => {
 
-        await updateParameters(weight.value, height.value).then(async () => {
+        await updateParameters(weight.value, height.value, male, upMass).then(async () => {
             if (user_id)
                 await setBrief(true, user_id)
         })
@@ -35,6 +41,27 @@ function Wellcome() {
 
         router.sendUserTo('/sign')
     }
+
+    const selectUpMass = () => {
+        setUpMass(true)
+        setDownMass(false)
+    }
+
+    const selectDownMass = () => {
+        setUpMass(false);
+        setDownMass(true)
+    }
+
+    const setMaleStatus = () => {
+        setMale(true)
+        setFemale(false)
+    }
+
+    const setFemaleStatus = () => {
+        setMale(false);
+        setFemale(true)
+    }
+
 
     return (
         <main className={style.wrapper}>
@@ -86,18 +113,48 @@ function Wellcome() {
                 <div className={style['container']}>
                     <div className={style.parameter}>
                         <p className={`${style['parameter-title']} ${style['weight']}`}>Вес (кг)</p>
-                        <input type="number" {...weight} required className={`${style['parameter-input']} ${style['weight']}`} />
+                        <input type="number" {...weight} required
+                               className={`${style['parameter-input']} ${style['weight']}`}/>
                     </div>
                     <div className={style.parameter}>
                         <p className={style['parameter-title']}>Рост (см)</p>
-                        <input type="number" {...height} required className={style['parameter-input']} />
+                        <input type="number" {...height} required className={style['parameter-input']}/>
+                    </div>
+
+                    <div className={style.parameter}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>Цель</p>
+                    </div>
+                    <div className={style.parameter}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>Пол</p>
+                    </div>
+
+                    <div className={style.parameter} onClick={selectUpMass}>
+                        <p className={style['parameter-title']}>
+                            <input type="checkbox" checked={upMass}/>Увеличить массу
+                            тела</p>
+                    </div>
+                    <div className={style.parameter} onClick={setMaleStatus}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>
+                            <input type="checkbox" checked={male}/> Мужчина
+                        </p>
+                    </div>
+                    <div className={style.parameter} onClick={selectDownMass}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>
+                            <input type="checkbox" checked={downMass}/> Снизить
+                            массу тела</p>
+                    </div>
+                    <div className={style.parameter} onClick={setFemaleStatus}>
+                        <p className={`${style['parameter-title']} ${style['weight']}`}>
+                            <input type="checkbox" checked={female}/> Женщина
+                        </p>
                     </div>
                 </div>
                 <button type='button' className={style['send-btn']} onClick={sendRequest}>Отправить</button>
             </div>
 
 
-            <p className={style.quote}><i>"Пять составляющих пути к победе – это стойкость, скорость, сила, мастерство и воля.
+            <p className={style.quote}><i>"Пять составляющих пути к победе – это стойкость, скорость, сила, мастерство и
+                воля.
                 Причем воля – это самое главное!" —— Кен Доэрти
             </i></p>
 
