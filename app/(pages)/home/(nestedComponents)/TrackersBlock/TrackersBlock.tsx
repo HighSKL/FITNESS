@@ -14,7 +14,7 @@ export default function TrackersBlock(props: PropsType) {
 
     const trackers = useSelector((state: RootState) => state.mainData.trackers)
 
-    const trackersRender = trackers.map(tracker => {
+    const trackersRender = trackers.map((tracker) => {
 
         const radius = 52;
         const circumference = 2 * Math.PI * radius;
@@ -28,7 +28,9 @@ export default function TrackersBlock(props: PropsType) {
 
         useEffect(() => {
             setProgress((tracker.progress.done / tracker.progress.need) * 100)
-        }, [])
+        }, [trackers])
+
+
 
         return (
             <div className={style.tracker} key={tracker.trackerID} >

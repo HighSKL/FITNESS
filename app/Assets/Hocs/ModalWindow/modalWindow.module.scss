@@ -20,6 +20,7 @@
     transition: .5s ease;
     animation: showWindow .3s;
     position: relative;
+    overflow: hidden;
 }
 
 .mob-close-window-line{
